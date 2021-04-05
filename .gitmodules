@@ -1,0 +1,11 @@
+[submodule "TeamAsimov"]
+	path = TeamAsimov
+	url = https://github.com/WesleyBumpus/TeamAsimov
+	branch = Finalized_Competition_Files_Asimov
+[submodule "UCFuzzyChallenge"]
+	path = SamKing
+	url = https://github.com/samking7185/UCFuzzyChallenge
+	branch = v2
+[submodule "UCFuzzyChallenge"]
+	path = WiceCwispies
+	url = https://github.com/WiceCwispies/HeiTerryAsteroids

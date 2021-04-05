@@ -1,4 +1,4 @@
-from ..util import Scenario
+from fuzzy_asteroids.util import Scenario
 
 import numpy as np
 

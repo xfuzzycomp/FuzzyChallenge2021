@@ -1,5 +1,5 @@
-from ..fuzzy_asteroids import AsteroidGame, FuzzyAsteroidGame
-from ..util import Scenario, Score
+from fuzzy_asteroids.fuzzy_asteroids import AsteroidGame, FuzzyAsteroidGame
+from fuzzy_asteroids.util import Scenario, Score
 
 import os
 import json
