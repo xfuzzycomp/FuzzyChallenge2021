@@ -10,6 +10,7 @@ scenario_asteroid_threat_test_1 = Scenario(
                      {"position": (700, 300), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (600, 300)},
+    seed=0
 )
 
 scenario_asteroid_threat_test_2 = Scenario(
@@ -18,6 +19,7 @@ scenario_asteroid_threat_test_2 = Scenario(
                      {"position": (100, 300), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (200, 300)},
+    seed=0
 )
 
 scenario_asteroid_threat_test_3 = Scenario(
@@ -26,6 +28,7 @@ scenario_asteroid_threat_test_3 = Scenario(
                      {"position": (400, 550), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 450)},
+    seed=0
 )
 
 scenario_asteroid_threat_test_4 = Scenario(
@@ -34,6 +37,7 @@ scenario_asteroid_threat_test_4 = Scenario(
                      {"position": (400, 50), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 150)},
+    seed=0
 )
 
 # Accuracy tests
@@ -43,6 +47,7 @@ scenario_asteroid_accuracy_test_1 = Scenario(
     asteroid_states=[{"position": (400, 500), "angle": 90.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_2 = Scenario(
@@ -50,6 +55,7 @@ scenario_asteroid_accuracy_test_2 = Scenario(
     asteroid_states=[{"position": (400, 500), "angle": -90.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_3 = Scenario(
@@ -57,6 +63,7 @@ scenario_asteroid_accuracy_test_3 = Scenario(
     asteroid_states=[{"position": (100, 100), "angle": 0.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_4 = Scenario(
@@ -64,6 +71,7 @@ scenario_asteroid_accuracy_test_4 = Scenario(
     asteroid_states=[{"position": (700, 100), "angle": 0.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_5 = Scenario(
@@ -71,6 +79,7 @@ scenario_asteroid_accuracy_test_5 = Scenario(
     asteroid_states=[{"position": (100, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_6 = Scenario(
@@ -78,6 +87,7 @@ scenario_asteroid_accuracy_test_6 = Scenario(
     asteroid_states=[{"position": (700, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_7 = Scenario(
@@ -85,6 +95,7 @@ scenario_asteroid_accuracy_test_7 = Scenario(
     asteroid_states=[{"position": (400, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100), "angle": 90.0},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_8 = Scenario(
@@ -92,6 +103,7 @@ scenario_asteroid_accuracy_test_8 = Scenario(
     asteroid_states=[{"position": (400, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100), "angle": -90.0},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_9 = Scenario(
@@ -99,6 +111,7 @@ scenario_asteroid_accuracy_test_9 = Scenario(
     asteroid_states=[{"position": (100, 500), "angle": -135.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (700, 100), "angle": -90.0},
+    seed=0
 )
 
 scenario_asteroid_accuracy_test_10 = Scenario(
@@ -106,6 +119,7 @@ scenario_asteroid_accuracy_test_10 = Scenario(
     asteroid_states=[{"position": (700, 500), "angle": 135.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (100, 100), "angle": 90.0},
+    seed=0
 )
 
 # Scenario which uses default ship state and placed asteroids in a line which fly toward the ship
@@ -559,6 +573,7 @@ scenario_asteroid_wall_right_wrap_1 = Scenario(
                      {"position": (600, 600), "angle": -90.0, "speed": 40},
                      ],
     ship_state={"position": (750, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_right_wrap_2 = Scenario(
@@ -572,6 +587,7 @@ scenario_asteroid_wall_right_wrap_2 = Scenario(
                      {"position": (750, 600), "angle": -90.0, "speed": 40},
                      ],
     ship_state={"position": (50, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_right_wrap_3 = Scenario(
@@ -592,6 +608,7 @@ scenario_asteroid_wall_right_wrap_3 = Scenario(
                      {"position": (200, 600), "angle": -90.0, "speed": 0},
                      ],
     ship_state={"position": (750, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_right_wrap_4 = Scenario(
@@ -612,6 +629,7 @@ scenario_asteroid_wall_right_wrap_4 = Scenario(
                      {"position": (200, 600), "angle": -90.0, "speed": 0},
                      ],
     ship_state={"position": (50, 300)},
+    seed=0
 )
 
 # Wrap left scenarios
@@ -626,6 +644,7 @@ scenario_asteroid_wall_left_wrap_1 = Scenario(
                      {"position": (200, 600), "angle": 90.0, "speed": 40},
                      ],
     ship_state={"position": (50, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_left_wrap_2 = Scenario(
@@ -639,6 +658,7 @@ scenario_asteroid_wall_left_wrap_2 = Scenario(
                      {"position": (50, 600), "angle": 90.0, "speed": 40},
                      ],
     ship_state={"position": (750, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_left_wrap_3 = Scenario(
@@ -659,6 +679,7 @@ scenario_asteroid_wall_left_wrap_3 = Scenario(
                      {"position": (600, 600), "angle": -90.0, "speed": 0},
                      ],
     ship_state={"position": (50, 300)},
+    seed=0
 )
 
 scenario_asteroid_wall_left_wrap_4 = Scenario(
@@ -679,6 +700,7 @@ scenario_asteroid_wall_left_wrap_4 = Scenario(
                      {"position": (600, 600), "angle": -90.0, "speed": 0},
                      ],
     ship_state={"position": (750, 300)},
+    seed=0
 )
 
 # Wrap top scenarios
@@ -695,6 +717,7 @@ scenario_asteroid_wall_top_wrap_1 = Scenario(
                      {"position": (800, 400), "angle": 0.0, "speed": 40},
                      ],
     ship_state={"position": (400, 550)},
+    seed=0
 )
 
 scenario_asteroid_wall_top_wrap_2 = Scenario(
@@ -710,6 +733,7 @@ scenario_asteroid_wall_top_wrap_2 = Scenario(
                      {"position": (800, 400), "angle": 0.0, "speed": 40},
                      ],
     ship_state={"position": (400, 50)},
+    seed=0
 )
 
 scenario_asteroid_wall_top_wrap_3 = Scenario(
@@ -734,6 +758,7 @@ scenario_asteroid_wall_top_wrap_3 = Scenario(
                      {"position": (800, 200), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 550)},
+    seed=0
 )
 
 scenario_asteroid_wall_top_wrap_4 = Scenario(
@@ -758,6 +783,7 @@ scenario_asteroid_wall_top_wrap_4 = Scenario(
                      {"position": (800, 200), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 50)},
+    seed=0
 )
 
 # Wrap bottom scenarios
@@ -774,6 +800,7 @@ scenario_asteroid_wall_bottom_wrap_1 = Scenario(
                      {"position": (800, 200), "angle": 180.0, "speed": 40},
                      ],
     ship_state={"position": (400, 50)},
+    seed=0
 )
 
 scenario_asteroid_wall_bottom_wrap_2 = Scenario(
@@ -789,6 +816,7 @@ scenario_asteroid_wall_bottom_wrap_2 = Scenario(
                      {"position": (800, 200), "angle": 180.0, "speed": 40},
                      ],
     ship_state={"position": (400, 550)},
+    seed=0
 )
 
 scenario_asteroid_wall_bottom_wrap_3 = Scenario(
@@ -813,6 +841,7 @@ scenario_asteroid_wall_bottom_wrap_3 = Scenario(
                      {"position": (800, 400), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 50)},
+    seed=0
 )
 
 scenario_asteroid_wall_bottom_wrap_4 = Scenario(
@@ -837,6 +866,7 @@ scenario_asteroid_wall_bottom_wrap_4 = Scenario(
                      {"position": (800, 400), "angle": 0.0, "speed": 0},
                      ],
     ship_state={"position": (400, 550)},
+    seed=0
 )
 
 # A scenario with a big non moving box
