@@ -973,12 +973,12 @@ scenario_2_still_corridors = Scenario(
 )
 
 portfolio = [
-    # scenario_asteroid_wall,
-    # scenario_asteroids_small,
+    scenario_asteroid_wall,
+    scenario_asteroids_small,
 
-    # scenario_asteroid_threat_test_1,
-    # scenario_asteroid_threat_test_2,
-    # scenario_asteroid_threat_test_3,
+    scenario_asteroid_threat_test_1,
+    scenario_asteroid_threat_test_2,
+    scenario_asteroid_threat_test_3,
     scenario_asteroid_threat_test_4,
     scenario_asteroid_accuracy_test_1,
     scenario_asteroid_accuracy_test_2,
