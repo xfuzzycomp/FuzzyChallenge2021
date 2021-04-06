@@ -57,7 +57,7 @@ class CompetitionRunner:
         # Run each controller over the whole portfolio
         for key, controller in self.builder_fcns.items():
             data = self.run(name=key,
-                            controller=controller() if callable(controller) else controller,
+                            controller=controller,
                             portfolio=portfolio,
                             graphics_on=graphics_on)
 
@@ -81,7 +81,7 @@ class CompetitionRunner:
         for scenario in _portfolio:
             scenario_name = str(scenario.name)
 
-            score = self._run_game(game, controller=controller, scenario=scenario)
+            score = self._run_game(game, controller=controller() if callable(controller) else controller, scenario=scenario)
 
             if not game.graphics_on:
                 print(".", end="")
@@ -95,7 +95,7 @@ class CompetitionRunner:
 
     @staticmethod
     def create_environment(override_settings, human_test=False) -> AsteroidGame:
-        settings = {"frequency": 60, "time_limit": 1000}
+        settings = {"frequency": 60, "time_limit": 100}
         settings.update(**override_settings)
 
         if human_test:

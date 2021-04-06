@@ -9,6 +9,14 @@ class Plotter:
         with open(file_path, "r") as file:
             self.data = json.load(file)
 
+    @property
+    def teams(self):
+        return [key for key in self.data.keys()]
+
+    @property
+    def scenarios(self):
+        return [key for key in self.data[next(iter(self.data))].keys()]
+
     def winner(self, data: Dict[str, Dict]):
         teams = [key for key in data.keys()]
         scenarios = [key for key in data[next(iter(data))].keys()]

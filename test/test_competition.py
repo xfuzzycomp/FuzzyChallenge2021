@@ -10,13 +10,6 @@ from competition.runner import CompetitionRunner
 from competition.plotter import Plotter
 
 
-# Competition repositories
-repos = [
-    "https://github.com/samking7185/UCFuzzyChallenge",
-    "https://github.com/WesleyBumpus/TeamAsimov",
-    "https://github.com/WiceCwispies/HeiTerryAsteroids"
-]
-
 
 class Controller1(ControllerBase):
 
@@ -35,7 +28,7 @@ class Controller2(ControllerBase):
 
 
 _portfolio = [
-    Scenario(name="scenario1", num_asteroids=4, seed=idx) for idx in range(2)
+    Scenario(name="scenario"+str(idx), num_asteroids=4, seed=idx) for idx in range(4)
 ]
 
 _show_portfolio = [
@@ -49,24 +42,18 @@ if __name__ == "__main__":
     }
 
     # Run the competition on the portfolio with no graphics and get the results
-    runner = CompetitionRunner(portfolio=portfolio, controllers=controllers)
-    data = runner.run_all(graphics_on=True)
-    # print(data)
-
-    # data = runner.run_human(name="brandon")
-    # print(data)
+    # runner = CompetitionRunner(portfolio=_portfolio, controllers=controllers)
+    # data = runner.run_all(graphics_on=False)
+    # runner.save_file("test_file.json", data)
 
     # data = CompetitionRunner().run_blind(name="controller1", controller=Controller1(), portfolio=_portfolio)
-    # print(data)
 
     # a = CompetitionRunner(builder_fcns=controllers)
     # data = a.run_all_blind(portfolio=_portfolio)
     # a.save_file("test_file.json", data)
 
-    # plotter = Plotter("test_file.json")
-    # plotter.winner(plotter.data)
-
-    # print("\n".join(str(row) for row in data))
+    plotter = Plotter("test_file.json")
+    plotter.winner(plotter.data)
 
     # a = CompetitionRunner(controllers={"controller1": Controller1()})
     # data = a.run_with_graphics(name="controller1", controller=Controller1(), portfolio=_show_portfolio)
