@@ -3,6 +3,8 @@ from typing import List, Tuple, Dict, Any
 # import matplotlib
 import matplotlib.pyplot as plt
 
+def convert_label(label: str):
+    return " ".join(l.capitalize() for l in label.split("_"))
 
 class Plotter:
     def __init__(self, file_path):
