@@ -5,6 +5,7 @@ from competition.plotter import Plotter
 
 if __name__ == "__main__":
 
-    test1 = Plotter("C:\\dev\\UCFuzzyChallenge2021\\test\\test_file.json")
-    test1.winner()
-    test1.plot()
+    plotter = Plotter(file_path=r"..\test\test_file.json")
+    plotter.winner()
+    plotter.plot()
+

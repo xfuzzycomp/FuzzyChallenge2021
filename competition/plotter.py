@@ -19,9 +19,11 @@ class Plotter:
         metrics["Asteroids Hit"] = [[scenario_score["asteroids_hit"] for key, scenario_score in score.items()] for score in score_dicts]
         metrics["Deaths"] = [[scenario_score["deaths"] for key, scenario_score in score.items()] for score in
                                score_dicts]
+
+        # todo add in zero check for accuracy
         metrics["Accuracy"] = [
-            [scenario_score["asteroids_hit"] / scenario_score["bullets_fired"] for key, scenario_score in score.items()]
-            for score in score_dicts]
+            [scenario_score["asteroids_hit"] / scenario_score["bullets_fired"] if scenario_score["bullets_fired"] != 0 else 0
+             for key, scenario_score in score.items()] for score in score_dicts]
         metrics["Distance Travelled"] = [[scenario_score["distance_travelled"] for key, scenario_score in score.items()] for score in
                           score_dicts]
         metrics["Mean Evaluation Time"] = [[scenario_score["mean_eval_time"] for key, scenario_score in score.items()] for score in
@@ -30,12 +32,15 @@ class Plotter:
                                score_dicts]
         return metrics
 
+    @property
+    def teams(self):
+        return [key for key in self.data.keys()]
+
+    @property
+    def scenarios(self):
+        return [key for key in self.data[next(iter(self.data))].keys()]
+
     def winner(self):
-
-        teams = [key for key in self.data.keys()]
-        scenarios = [key for key in self.data[next(iter(self.data))].keys()]
-        print(scenarios)
-
 
         asteroid_scores = [sum(score for score in controller) for controller in self.metrics["Asteroids Hit"]]
         death_scores = [sum(score for score in controller) for controller in self.metrics["Deaths"]]
@@ -45,27 +50,24 @@ class Plotter:
 
         if asteroid_scores.count(max_score) > 1:
             tied_idxs = [idx for idx in range(len(asteroid_scores)) if asteroid_scores[idx] == max_score]
-            print(f"There is a {len(tied_idxs)}-way tie between {' and '.join(teams[idx] for idx in tied_idxs)}")
+            print(f"There is a {len(tied_idxs)}-way tie between {' and '.join(self.teams[idx] for idx in tied_idxs)}")
         else:
             winner_idx = asteroid_scores.index(max_score)
-            print(f"{teams[winner_idx]} is the winner with {max_score} asteroids destroyed")
+            print(f"{self.teams[winner_idx]} is the winner with {max_score} asteroids destroyed")
 
         print()
         print("all scores")
-        print(" ".join(teams))
-        for idx, scenario in enumerate(scenarios):
-            print(scenario, self.metrics["Asteroids Hit"][idx])
-        print(" ".join(str(score) for score in asteroid_scores))
+        print(" ".join(self.teams))
+        for idx, scenario in enumerate(self.scenarios):
+            print("Total " + " ".join(str(score) for score in asteroid_scores))
 
     def plot(self):
-        teams = [key for key in self.data.keys()]
-        scenarios = [key for key in self.data[next(iter(self.data))].keys()]
 
         for ind, (key, value) in enumerate(self.metrics.items()):
             plt.figure(ind)
-            for ii in range(len(teams)):
-                plt.plot(list(range(len(scenarios))), value[ii], label=teams[ii])
-            plt.xticks(list(range(len(scenarios))), scenarios, size="small")
+            for ii in range(len(self.teams)):
+                plt.plot(list(range(len(self.scenarios))), value[ii], label=self.teams[ii])
+            plt.xticks(list(range(len(self.scenarios))), self.scenarios, size="small")
             plt.grid(True)
             plt.xlabel("Scenario")
             plt.ylabel(key)
