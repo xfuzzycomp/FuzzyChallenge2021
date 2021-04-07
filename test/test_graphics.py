@@ -6,7 +6,7 @@ from competition.plotter import Plotter
 
 if __name__ == "__main__":
     plotter = Plotter("test_file.json")
-    plotter.winner(plotter.data)
+    plotter.winner()
 
     import dash
     import dash_core_components as dcc
