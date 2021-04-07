@@ -1,5 +1,7 @@
 import json
 from typing import List, Tuple, Dict, Any
+# import matplotlib
+import matplotlib.pyplot as plt
 
 
 class Plotter:
@@ -9,19 +11,35 @@ class Plotter:
         with open(file_path, "r") as file:
             self.data = json.load(file)
 
-    def winner(self, data: Dict[str, Dict]):
-        teams = [key for key in data.keys()]
-        scenarios = [key for key in data[next(iter(data))].keys()]
+        self.metrics = self.generate_metrics()
+
+    def generate_metrics(self):
+        metrics = {}
+        score_dicts = [item for _, item in self.data.items()]
+        metrics["Asteroids Hit"] = [[scenario_score["asteroids_hit"] for key, scenario_score in score.items()] for score in score_dicts]
+        metrics["Deaths"] = [[scenario_score["deaths"] for key, scenario_score in score.items()] for score in
+                               score_dicts]
+        metrics["Accuracy"] = [
+            [scenario_score["asteroids_hit"] / scenario_score["bullets_fired"] for key, scenario_score in score.items()]
+            for score in score_dicts]
+        metrics["Distance Travelled"] = [[scenario_score["distance_travelled"] for key, scenario_score in score.items()] for score in
+                          score_dicts]
+        metrics["Mean Evaluation Time"] = [[scenario_score["mean_eval_time"] for key, scenario_score in score.items()] for score in
+                               score_dicts]
+        metrics["Shots Fired"] = [[scenario_score["bullets_fired"] for key, scenario_score in score.items()] for score in
+                               score_dicts]
+        return metrics
+
+    def winner(self):
+
+        teams = [key for key in self.data.keys()]
+        scenarios = [key for key in self.data[next(iter(self.data))].keys()]
         print(scenarios)
 
-        score_dicts = [item for _, item in data.items()]
-        asteroids_per_scenario = [[scenario_score["asteroids_hit"] for key, scenario_score in score.items()] for score in score_dicts]
-        deaths_per_scenario = [[scenario_score["deaths"] for key, scenario_score in score.items()] for score in score_dicts]
-        accuracy_per_scenario = [[scenario_score["asteroids_hit"]/scenario_score["bullets_fired"] for key, scenario_score in score.items()] for score in score_dicts]
 
-        asteroid_scores = [sum(score for score in controller) for controller in asteroids_per_scenario]
-        death_scores = [sum(score for score in controller) for controller in deaths_per_scenario]
-        accuracy_scores = [sum(score for score in controller) for controller in accuracy_per_scenario]
+        asteroid_scores = [sum(score for score in controller) for controller in self.metrics["Asteroids Hit"]]
+        death_scores = [sum(score for score in controller) for controller in self.metrics["Deaths"]]
+        accuracy_scores = [sum(score for score in controller) for controller in self.metrics["Accuracy"]]
 
         max_score = max(asteroid_scores)
 
@@ -36,11 +54,24 @@ class Plotter:
         print("all scores")
         print(" ".join(teams))
         for idx, scenario in enumerate(scenarios):
-            print(scenario, asteroids_per_scenario[idx])
+            print(scenario, self.metrics["Asteroids Hit"][idx])
         print(" ".join(str(score) for score in asteroid_scores))
 
     def plot(self):
-        pass
+        teams = [key for key in self.data.keys()]
+        scenarios = [key for key in self.data[next(iter(self.data))].keys()]
+
+        for ind, (key, value) in enumerate(self.metrics.items()):
+            plt.figure(ind)
+            for ii in range(len(teams)):
+                plt.plot(list(range(len(scenarios))), value[ii], label=teams[ii])
+            plt.xticks(list(range(len(scenarios))), scenarios, size="small")
+            plt.grid(True)
+            plt.xlabel("Scenario")
+            plt.ylabel(key)
+            plt.title(key + " vs. Scenario")
+            plt.legend()
+        plt.show()
 
     def save(self):
         pass
