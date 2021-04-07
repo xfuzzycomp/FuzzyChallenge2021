@@ -26,7 +26,7 @@ class Plotter:
         metrics["accuracy"] = [
             [scenario_score["asteroids_hit"] / scenario_score["bullets_fired"] if scenario_score["bullets_fired"] != 0 else 0
              for key, scenario_score in score.items()] for score in score_dicts]
-        metrics["distance Travelled"] = [[scenario_score["distance_travelled"] for key, scenario_score in score.items()]
+        metrics["distance_travelled"] = [[scenario_score["distance_travelled"] for key, scenario_score in score.items()]
                                          for score in score_dicts]
         metrics["mean_evaluation_time"] = [[scenario_score["mean_eval_time"] for key, scenario_score in score.items()]
                                            for score in score_dicts]
