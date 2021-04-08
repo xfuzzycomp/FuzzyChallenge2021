@@ -1,12 +1,12 @@
 [submodule "TeamAsimov"]
 	path = controllers/TeamAsimov
 	url = https://github.com/WesleyBumpus/TeamAsimov
-	branch = Finalized_Competition_Files_Asimov
+	branch = competition
 [submodule "SamKing"]
 	path = controllers/SamKing
 	url = https://github.com/samking7185/UCFuzzyChallenge
-	branch = v2
-[submodule "WiceCwispies"]
-	path = controllers/WiceCwispies
+	branch = competition
+[submodule "HeiTerry"]
+	path = controllers/HeiTerry
 	url = https://github.com/WiceCwispies/HeiTerryAsteroids
-	branch = main
+	branch = competition

@@ -4,3 +4,4 @@ numpy
 scikit-fuzzy
 matplotlib
 fuzzy-c-means
+pandas
