@@ -82,14 +82,33 @@ class Plotter:
         eval_times = [[row[i] for row in self.evaluation_times] for i in range(len(self.scenarios))]
         # histogram plots for evaluation times
         n_bins = 20
-        fig, axs = plt.subplots(1, len(self.scenarios), sharey='all')
-        for ind, val in enumerate(eval_times):
-            for ii in range(len(self.teams)):
-                axs[ind].hist(val[ii], bins=n_bins, density=True, edgecolor="black", linewidth=1, label=self.teams[ii], alpha=0.5)
-            axs[ind].set_title(self.scenarios[ind])
-            axs[ind].set_xticklabels(axs[ind].get_xticklabels(), rotation=30)
-            axs[ind].grid(True)
-            axs[ind].legend()
+        print(len(self.scenarios))
+        # fig, axs = plt.subplots(1, len(self.scenarios), sharey='all')
+        num_rows = 5
+        num_col = 5
+        fig, axs = plt.subplots(num_rows, num_col)
+        ind = 0
+        colors = ["k", "b", "g"]
+        for kk in range(num_rows):
+            for jj in range(num_col):
+                for ii in range(len(self.teams)):
+                    axs[kk, jj].hist(eval_times[ind][ii], bins=n_bins, density=True, edgecolor="black", linewidth=1, label=self.teams[ii], alpha=0.5, color=colors[ii])
+                axs[kk, jj].set_title(self.scenarios[ind])
+                axs[kk, jj].set_xticklabels(axs[kk, jj].get_xticklabels(), rotation=30)
+                axs[kk, jj].set_yticklabels(axs[kk, jj].get_yticklabels(), rotation=80)
+                axs[kk, jj].grid(True)
+
+                ind += 1
+
+        axs[kk, jj].legend()
+        fig.savefig("evaluation_times_per_scenario.pdf")
+        # for ind, val in enumerate(eval_times):
+        #     for ii in range(len(self.teams)):
+        #         axs[ind].hist(val[ii], bins=n_bins, density=True, edgecolor="black", linewidth=1, label=self.teams[ii], alpha=0.5)
+        #     axs[ind].set_title(self.scenarios[ind])
+        #     axs[ind].set_xticklabels(axs[ind].get_xticklabels(), rotation=30)
+        #     axs[ind].grid(True)
+        #     axs[ind].legend()
             # plt.xlabel(self.scenarios[ind])
             # plt.ylabel("Density")
             # plt.legend()
@@ -98,13 +117,14 @@ class Plotter:
         for ind, (key, value) in enumerate(self.metrics.items()):
             plt.figure(ind+2)
             for ii in range(len(self.teams)):
-                plt.plot(list(range(len(self.scenarios))), value[ii], label=self.teams[ii])
-            plt.xticks(list(range(len(self.scenarios))), self.scenarios, size=8, rotation=30)
+                plt.plot(list(range(len(self.scenarios))), value[ii], label=self.teams[ii], color=colors[ii])
+            plt.xticks(list(range(len(self.scenarios))), self.scenarios, size=8, rotation=60)
             plt.grid(True)
             plt.xlabel("Scenario")
             plt.ylabel(convert_label(key))
             plt.title(convert_label(key) + " vs. Scenario")
             plt.legend()
+            plt.savefig(key + "_per_scenario.pdf")
         plt.show()
 
 
