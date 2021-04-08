@@ -2,8 +2,8 @@ import json
 from typing import List, Tuple, Dict, Any
 # import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib import colors
-from matplotlib.ticker import PercentFormatter
+# from matplotlib import colors
+# from matplotlib.ticker import PercentFormatter
 
 def convert_label(label: str):
     return " ".join(l.capitalize() for l in label.split("_"))
@@ -80,30 +80,30 @@ class Plotter:
     def plot(self):
         # rearranging eval times to be per scenario for all teams
         eval_times = [[row[i] for row in self.evaluation_times] for i in range(len(self.scenarios))]
-        #histogram plots for evaluation times
+        # histogram plots for evaluation times
         n_bins = 20
+        fig, axs = plt.subplots(1, len(self.scenarios), sharey='all')
         for ind, val in enumerate(eval_times):
-            # print(ind, val)
-            plt.figure(ind)
             for ii in range(len(self.teams)):
-                plt.hist(val[ii], bins=n_bins, density=True, edgecolor="black", linewidth=1, label=self.teams[ii], alpha=0.5)
-            plt.grid(True)
-            plt.xticks(rotation=30)
-            plt.xlabel("Evaluation Time")
-            plt.ylabel("Density")
-            plt.title(self.scenarios[ind] + " Evaluation Times")
-            plt.legend()
+                axs[ind].hist(val[ii], bins=n_bins, density=True, edgecolor="black", linewidth=1, label=self.teams[ii], alpha=0.5)
+            axs[ind].set_title(self.scenarios[ind])
+            axs[ind].set_xticklabels(axs[ind].get_xticklabels(), rotation=30)
+            axs[ind].grid(True)
+            axs[ind].legend()
+            # plt.xlabel(self.scenarios[ind])
+            # plt.ylabel("Density")
+            # plt.legend()
 
         # normal metrics plots, per scenario and for each team
-        for ind2, (key, value) in enumerate(self.metrics.items()):
-            plt.figure(ind2+ind+1)
+        for ind, (key, value) in enumerate(self.metrics.items()):
+            plt.figure(ind+2)
             for ii in range(len(self.teams)):
                 plt.plot(list(range(len(self.scenarios))), value[ii], label=self.teams[ii])
             plt.xticks(list(range(len(self.scenarios))), self.scenarios, size=8, rotation=30)
             plt.grid(True)
             plt.xlabel("Scenario")
-            plt.ylabel(key)
-            plt.title(key + " vs. Scenario")
+            plt.ylabel(convert_label(key))
+            plt.title(convert_label(key) + " vs. Scenario")
             plt.legend()
         plt.show()
 
