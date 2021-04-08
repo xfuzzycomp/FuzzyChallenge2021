@@ -6,7 +6,7 @@
 	path = controllers/SamKing
 	url = https://github.com/samking7185/UCFuzzyChallenge
 	branch = competition
-[submodule "WiceCwispies"]
-	path = controllers/WiceCwispies
+[submodule "HeiTerry"]
+	path = controllers/HeiTerry
 	url = https://github.com/WiceCwispies/HeiTerryAsteroids
 	branch = competition
