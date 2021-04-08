@@ -10,6 +10,23 @@ class CompetitionScore(Score):
     def __init__(self):
         super().__init__()
 
+        self._last_num_deaths = 0
+
+        self.death_times = []
+        self.accuracy_over_time = []
+        self.asteroids_over_time = []
+
+    def timestep_update(self, environment) -> None:
+        if self.deaths != self._last_num_deaths:
+            self._last_num_deaths = self.deaths
+            self.death_times.append(self.time)
+
+        self.accuracy_over_time.append(self.accuracy)
+        self.asteroids_over_time.append(self.asteroids_hit)
+
+    def final_update(self, environment) -> None:
+        pass
+
     def header(self) -> List:
         return list(key for key in self.__dict__.keys())
 
@@ -113,3 +130,5 @@ class CompetitionRunner:
         :return: CompetitionScore
         """
         return game.run(controller=controller, scenario=scenario, score=CompetitionScore())
+
+

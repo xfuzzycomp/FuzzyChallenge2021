@@ -17,7 +17,7 @@ sys.path.insert(2, os.path.abspath("../controllers/WiceCwispies/src"))
 
 # Perform import of partiicpant controllers
 import controllers.SamKing.controller
-import controllers.TeamAsimov.src.sample_controller
+import controllers.TeamAsimov.src.evaluator
 import controllers.WiceCwispies.src.sample_training_script
 
 # Set up controllers based on given examples
@@ -33,9 +33,9 @@ wice_cwispies_chrom = controllers.WiceCwispies.src.sample_training_script.Chromo
 
 # Store controller definitions in delayed function calls
 controllers = {
-    # "SamKing": partial(controllers.SamKing.controller.FuzzyController, sam_king_gene),
-    # "TeamAsimov": controllers.TeamAsimov.src.sample_controller.FuzzyController,
-    "WiceCwispies": partial(controllers.WiceCwispies.src.sample_training_script.FuzzyController, wice_cwispies_chrom)
+    "SamKing": partial(controllers.SamKing.controller.FuzzyController, sam_king_gene),
+    "TeamAsimov": controllers.TeamAsimov.src.evaluator.FuzzyController,
+    "HeiTerry": partial(controllers.WiceCwispies.src.sample_training_script.FuzzyController, wice_cwispies_chrom)
 }
 
 
