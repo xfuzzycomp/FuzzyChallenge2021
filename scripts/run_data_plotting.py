@@ -7,6 +7,7 @@ if __name__ == "__main__":
 
     # plotter = Plotter(file_path=r"..\test\test_file.json")
     plotter = Plotter(file_path=r"..\scripts\competition_data.json")
-    plotter.winner()
+    # plotter.winner()
+    plotter.total_run_time()
     plotter.plot()
 
