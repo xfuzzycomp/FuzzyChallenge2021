@@ -9,7 +9,7 @@ __pycache__/
 *.so
 
 # saved data files
-.pdf
+*.pdf
 
 # Distribution / packaging
 .Python
