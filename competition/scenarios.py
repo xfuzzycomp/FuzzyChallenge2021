@@ -122,19 +122,6 @@ accuracy_test_10 = Scenario(
     seed=0
 )
 
-# Scenario which uses default ship state and placed asteroids in a line which fly toward the ship
-wall = Scenario(
-    name="wall",
-    asteroid_states=[{"position": (200, 200), "angle": 0.0, "speed": 40},
-                     {"position": (300, 200), "angle": 0.0, "speed": 40},
-                     {"position": (400, 200), "angle": 0.0, "speed": 40},
-                     {"position": (500, 200), "angle": 0.0, "speed": 40},
-                     {"position": (600, 200), "angle": 0.0, "speed": 40},
-                     ],
-    ship_state={"position": (100, 500)},
-    seed=0
-)
-
 # "Easy" wall scenario with default ship state, starts on left and moves right
 wall_left_easy = Scenario(
     name="wall_left_easy",

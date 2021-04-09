@@ -1,14 +1,16 @@
 # UCFuzzyChallenge2021
 UC and NAFIPS Explainable Fuzzy Challenge
 
-## Installation
+## Getting the Source code
 
 Download or clone the files from this repository to your computer.
 
 With git installed on your computer, use the following command within the
-project directory:
+project repo directory:
 
-    git submodules --init
+    git submodule update --init --recursive
+
+## Installing dependencies
 
 Use the following command to install all dependencies:
 
@@ -17,7 +19,7 @@ Use the following command to install all dependencies:
 
 ## Viewing your AI over the competition portfolio
 
-
+Uncomment the appropriate line in `scripts/run_competition.py` to view your or another team's AI.
 
 ## Viewing the graphics
 

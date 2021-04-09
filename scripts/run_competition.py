@@ -2,17 +2,14 @@
 This file is used to run graphics for the competition
 """
 
-from competition.portfolio import portfolio
-from competition.runner import CompetitionRunner
-
 from competition.competitors import controllers
+from competition.portfolio import portfolio, show_portfolio
+from competition.runner import CompetitionRunner
 
 
 def run_competition(portfolio, controllers):
-    # Run the competition with graphics
     runner = CompetitionRunner(portfolio=portfolio, controllers=controllers)
     runner.run_all(opt_settings={"time_limit": 60})
-
 
 
 if __name__ == "__main__":
