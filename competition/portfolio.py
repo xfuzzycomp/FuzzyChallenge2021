@@ -1,6 +1,10 @@
 from competition.scenarios import *
 
 portfolio = [
+    threat_test_1,
+    threat_test_2,
+    threat_test_3,
+    threat_test_4,
     accuracy_test_1,
     accuracy_test_2,
     accuracy_test_3,
@@ -11,10 +15,6 @@ portfolio = [
     accuracy_test_8,
     accuracy_test_9,
     accuracy_test_10,
-    threat_test_1,
-    threat_test_2,
-    threat_test_3,
-    threat_test_4,
     wall_left_easy,
     wall_right_easy,
     wall_top_easy,
@@ -44,6 +44,10 @@ portfolio = [
 ]
 
 show_portfolio = [
+    threat_test_1,
+    threat_test_2,
+    threat_test_3,
+    threat_test_4,
     accuracy_test_1,
     accuracy_test_2,
     accuracy_test_3,
@@ -54,10 +58,6 @@ show_portfolio = [
     accuracy_test_8,
     accuracy_test_9,
     accuracy_test_10,
-    threat_test_1,
-    threat_test_2,
-    threat_test_3,
-    threat_test_4,
     wall_left_easy,
     wall_right_easy,
     wall_top_easy,
