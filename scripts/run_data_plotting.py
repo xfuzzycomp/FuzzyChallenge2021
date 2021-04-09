@@ -47,18 +47,18 @@ app.layout = html.Div([
     ], style={"border-bottom": "3px solid #bbb", "position": "sticky", "top": "0", "width":"100%", "z-index":"100", "background-color": "#F0F8FF", "margin-bottom": 10, "padding-bottom": 10}),
 
     # Summary plots (only shown during "summary" scenario)
-    # html.Div([
-    #     html.Div([
-    #         dcc.Graph(id="summary-table"),
-    #         dcc.Graph(id="summary-asteroids-destroyed"),
-    #         dcc.Graph(id="summary-deaths"),
-    #         dcc.Graph(id="summary-accuracy"),
-    #         dcc.Graph(id="summary-distance-travelled"),
-    #         dcc.Graph(id="summary-mean-evaluation-time"),
-    #         dcc.Graph(id="summary-shots-fired"),
-    #         dcc.Graph(id="summary-time"),
-    #     ]),
-    # ], id="summary-div", style={"display": "block", "width": "98%"}),
+    html.Div([
+        html.Div([
+            dcc.Graph(id="summary-table"),
+            dcc.Graph(id="summary-asteroids-destroyed"),
+            dcc.Graph(id="summary-deaths"),
+            dcc.Graph(id="summary-accuracy"),
+            dcc.Graph(id="summary-distance-travelled"),
+            dcc.Graph(id="summary-mean-evaluation-time"),
+            dcc.Graph(id="summary-shots-fired"),
+            dcc.Graph(id="summary-time"),
+        ]),
+    ], id="summary-div", style={"display": "block", "width": "98%"}),
 
     # Graphics Shown on a per scenario basis
     html.Div([
