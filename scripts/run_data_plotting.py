@@ -120,6 +120,7 @@ def summary_score(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Asteroids Destroyed per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -139,6 +140,7 @@ def summary_deaths(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["deaths"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Deaths per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -158,6 +160,7 @@ def summary_accuracy(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=[acc*100.0 for acc in plotter.metrics["accuracy"][idx]], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Accuracy per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -177,6 +180,7 @@ def summary_distance_travelled(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["distance_travelled"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Distance Travelled per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -196,6 +200,7 @@ def summary_mean_eval_time(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["mean_evaluation_time"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Mean Evaluation Time per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -215,6 +220,7 @@ def summary_shots_fired(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["shots_fired"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Shots Fired per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
@@ -234,6 +240,7 @@ def summary_time(teams, scenario):
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["time"][idx], name=team)
               for idx, team in enumerate(teams)])
 
+    fig.update_xaxes(tickangle=90)
     fig.update_layout(title="Sim Time per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
