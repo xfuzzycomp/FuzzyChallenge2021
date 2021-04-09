@@ -1,11 +1,3 @@
-import sys
-import os
-
-# Modify path for web app
-if os.path.dirname(__file__) not in sys.path:
-    sys.path.append(os.path.dirname(__file__))
-
-
 import numpy as np
 import dash
 import dash_core_components as dcc
@@ -17,7 +9,7 @@ import plotly.graph_objects as go
 from competition.plotter import Plotter
 
 environment_frequency = 60  # Hz
-plotter = Plotter("../scripts/competition_data.json")
+plotter = Plotter("competition_data.json")
 # plotter.winner()
 
 app = dash.Dash(__name__)
