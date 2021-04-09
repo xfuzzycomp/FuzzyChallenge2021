@@ -5,3 +5,5 @@ scikit-fuzzy
 matplotlib
 fuzzy-c-means
 pandas
+plotly
+dash
