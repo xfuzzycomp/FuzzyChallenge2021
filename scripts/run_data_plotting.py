@@ -37,7 +37,7 @@ app.layout = html.Div([
             ], style={"width": "40%", "display": "inline-block"}),
 
             html.Div([
-                html.P("Scenarios:"),
+                html.P("Scenario:"),
                 dcc.Dropdown(
                     id="dropdown-scenario",
                     options=[{"label": x, "value": x} for x in ["summary"] + plotter.scenarios],
@@ -80,43 +80,42 @@ app.layout = html.Div([
 @app.callback(
     Output(component_id="summary-div", component_property="style"), Output(component_id="scenario-div", component_property="style"),
     [Input("dropdown-scenario", "value")])
-def toggle_summary_div_visibility(scenarios):
-    if scenarios == "summary":
+def toggle_summary_div_visibility(scenario):
+    if scenario == "summary":
         return {"display": "block"}, {"display": "none"}
     else:
         return {"display": "none"}, {"display": "block"}
 
 
 # summary callbacks
-# @app.callback(
-#     Output("summary-table", "figure"),
-#     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-# def summary_table(teams, scenarios):
-#     if scenarios != "summary":
-#         raise dash.exceptions.PreventUpdate
-#
-#     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
-#                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
-#
-#     data = [[plotter.data[team][scenarios][label] for idx, team in enumerate(teams)] for label in categories]
-#
-#     table = go.Table(
-#         header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
-#         cells=dict(values=[teams] + data))
-#     table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"],
-#                           [".4f"]]
-#
-#     fig = go.Figure(table)
-#     fig.update_layout(title="Performance Summary")
-#
-#     return fig
+@app.callback(
+    Output("summary-table", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_table(teams, scenario):
+    if scenario != "summary":
+        raise dash.exceptions.PreventUpdate
+
+    categories = ["asteroids_hit", "deaths", "accuracy", "distance_travelled", "mean_evaluation_time", "shots_fired",
+                  "time"]
+
+    data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)] for label in categories]
+
+    table = go.Table(
+        header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+        cells=dict(values=[teams] + data))
+    table.cells.format = [[None], [None], [None], [".2f"], [".0f"], [".4f"], [None], [".2f"]]
+
+    fig = go.Figure(table)
+    fig.update_layout(title="Performance Summary")
+
+    return fig
 
 # summary callbacks
 @app.callback(
     Output("summary-asteroids-destroyed", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_score(teams, scenarios):
-    if scenarios != "summary":
+def summary_score(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -134,8 +133,8 @@ def summary_score(teams, scenarios):
 @app.callback(
     Output("summary-deaths", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_deaths(teams, scenarios):
-    if scenarios != "summary":
+def summary_deaths(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -153,8 +152,8 @@ def summary_deaths(teams, scenarios):
 @app.callback(
     Output("summary-accuracy", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_accuracy(teams, scenarios):
-    if scenarios != "summary":
+def summary_accuracy(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -172,8 +171,8 @@ def summary_accuracy(teams, scenarios):
 @app.callback(
     Output("summary-distance-travelled", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_distance_travelled(teams, scenarios):
-    if scenarios != "summary":
+def summary_distance_travelled(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -191,8 +190,8 @@ def summary_distance_travelled(teams, scenarios):
 @app.callback(
     Output("summary-mean-evaluation-time", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_mean_eval_time(teams, scenarios):
-    if scenarios != "summary":
+def summary_mean_eval_time(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -210,8 +209,8 @@ def summary_mean_eval_time(teams, scenarios):
 @app.callback(
     Output("summary-shots-fired", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_shots_fired(teams, scenarios):
-    if scenarios != "summary":
+def summary_shots_fired(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -229,8 +228,8 @@ def summary_shots_fired(teams, scenarios):
 @app.callback(
     Output("summary-time", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def summary_time(teams, scenarios):
-    if scenarios != "summary":
+def summary_time(teams, scenario):
+    if scenario != "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
@@ -248,13 +247,13 @@ def summary_time(teams, scenarios):
 @app.callback(
     Output("asteroids-destroyed", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def num_asteroids_over_time(teams, scenarios):
-    if scenarios == "summary":
+def num_asteroids_over_time(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
-        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["asteroids_over_time"])+1).tolist(),
-                         y=plotter.data[team][scenarios]["asteroids_over_time"],
+        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["asteroids_over_time"])+1).tolist(),
+                         y=plotter.data[team][scenario]["asteroids_over_time"],
                          mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
@@ -269,13 +268,13 @@ def num_asteroids_over_time(teams, scenarios):
 @app.callback(
     Output("num-asteroids", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def num_asteroids_over_time(teams, scenarios):
-    if scenarios == "summary":
+def num_asteroids_over_time(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
-        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["evaluation_times"])+1).tolist(),
-                         y=plotter.data[team][scenarios]["num_asteroids"],
+        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["evaluation_times"])+1).tolist(),
+                         y=plotter.data[team][scenario]["num_asteroids"],
                          mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
@@ -291,13 +290,13 @@ def num_asteroids_over_time(teams, scenarios):
 @app.callback(
     Output("accuracy", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def num_asteroids_over_time(teams, scenarios):
-    if scenarios == "summary":
+def num_asteroids_over_time(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
-        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["accuracy_over_time"])+1).tolist(),
-                         y=[val * 100.0  for val in plotter.data[team][scenarios]["accuracy_over_time"]],
+        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["accuracy_over_time"])+1).tolist(),
+                         y=[val * 100.0  for val in plotter.data[team][scenario]["accuracy_over_time"]],
                          mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
@@ -311,13 +310,13 @@ def num_asteroids_over_time(teams, scenarios):
 @app.callback(
     Output("eval-times", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def graph_eval_times(teams, scenarios):
-    if scenarios == "summary":
+def graph_eval_times(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
-        data=[go.Scatter(x=plotter.data[team][scenarios]["num_asteroids"],
-                         y=plotter.data[team][scenarios]["evaluation_times"],
+        data=[go.Scatter(x=plotter.data[team][scenario]["num_asteroids"],
+                         y=plotter.data[team][scenario]["evaluation_times"],
                          mode="markers", name=team)
               for idx, team in enumerate(teams)])
 
@@ -327,7 +326,7 @@ def graph_eval_times(teams, scenarios):
                       xaxis_title="Asteroids (#)",
                       yaxis_title="Evaluation Time (sec)")
 
-    max_x = max(max(plotter.data[team][scenarios]["num_asteroids"]) for idx, team in enumerate(teams))
+    max_x = max(max(plotter.data[team][scenario]["num_asteroids"]) for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
                              name=f"{environment_frequency} Hz Limit", mode="lines",
                              marker_color="rgba(0, 0, 0, .8)"))
@@ -338,14 +337,14 @@ def graph_eval_times(teams, scenarios):
 @app.callback(
     Output("eval-times-series", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def graph_eval_times_series(teams, scenarios):
-    if scenarios == "summary":
+def graph_eval_times_series(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     fig = go.Figure(
-        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"],
-                                       len(plotter.data[team][scenarios]["evaluation_times"]) + 1).tolist(),
-                         y=plotter.data[team][scenarios]["evaluation_times"],
+        data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"],
+                                       len(plotter.data[team][scenario]["evaluation_times"]) + 1).tolist(),
+                         y=plotter.data[team][scenario]["evaluation_times"],
                          mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
@@ -354,7 +353,7 @@ def graph_eval_times_series(teams, scenarios):
                       xaxis_title="Time (sec)",
                       yaxis_title="Evaluation Time (sec)")
 
-    max_x = max(plotter.data[team][scenarios]["time"] for idx, team in enumerate(teams))
+    max_x = max(plotter.data[team][scenario]["time"] for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
                              name=f"{environment_frequency} Hz Limit", mode="lines",
                              marker_color="rgba(0, 0, 0, .8)"))
@@ -363,14 +362,14 @@ def graph_eval_times_series(teams, scenarios):
 @app.callback(
     Output("table", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def scenario_data_table(teams, scenarios):
-    if scenarios == "summary":
+def scenario_data_table(teams, scenario):
+    if scenario == "summary":
         raise dash.exceptions.PreventUpdate
 
     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
 
-    data = [[plotter.data[team][scenarios][label] for idx, team in enumerate(teams)] for label in categories]
+    data = [[plotter.data[team][scenario][label] for idx, team in enumerate(teams)] for label in categories]
 
     table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
                      cells=dict(values=[teams] + data))
