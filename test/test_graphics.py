@@ -57,31 +57,13 @@ app.layout = html.Div([
         html.Div([
 
             html.Div([
-                dcc.Graph(id="summary-asteroids-destroyed")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-deaths")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-accuracy")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-distance-travelled")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-mean-evaluation-time")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-shots-fired")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
-            html.Div([
-                dcc.Graph(id="summary-time")],
+                dcc.Graph(id="summary-asteroids-destroyed"),
+                dcc.Graph(id="summary-deaths"),
+                dcc.Graph(id="summary-accuracy"),
+                dcc.Graph(id="summary-distance-travelled"),
+                dcc.Graph(id="summary-mean-evaluation-time"),
+                dcc.Graph(id="summary-shots-fired"),
+                dcc.Graph(id="summary-time"),
                 style={"width": "95%", "display": "inline-block"},
             ),
 

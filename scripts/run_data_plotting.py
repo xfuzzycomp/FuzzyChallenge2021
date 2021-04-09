@@ -21,7 +21,7 @@ app.layout = html.Div([
     # Floating header
     html.Div([
 
-        html.H1("UC Fuzzy Challenge 2021"),
+        html.H1("UC Fuzzy Challenge 2021", style={"text-align": "center"}),
 
         html.Div([
             html.Div([
@@ -52,12 +52,12 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
-            # dcc.Graph(id="summary-asteroids-destroyed"),
+            dcc.Graph(id="summary-deaths"),
+            dcc.Graph(id="summary-accuracy"),
+            dcc.Graph(id="summary-distance-travelled"),
+            dcc.Graph(id="summary-mean-evaluation-time"),
+            dcc.Graph(id="summary-shots-fired"),
+            dcc.Graph(id="summary-time"),
         ]),
     ], id="summary-div", style={"background-color": "#FFFFFF", 'display': 'block'}),
 
@@ -85,6 +85,119 @@ def toggle_summary_div_visibility(scenarios):
     else:
         return {'display': 'none'}, {'display': 'block'}
 
+
+# summary callbacks
+@app.callback(
+    Output("summary-asteroids-destroyed", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_score(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Asteroids Destroyed per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Asteroids Destroyed",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-deaths", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_deaths(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["deaths"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Deaths per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Deaths",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-accuracy", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_accuracy(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["accuracy"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Accuracy per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Accuracy",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-distance-travelled", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_distance_travelled(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["distance_travelled"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Distance Travelled per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Distance Travelled",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-mean-evaluation-time", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_mean_eval_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["mean_evaluation_time"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Mean Evaluation Time per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Mean Evaluation Time (s)",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-shots-fired", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_shots_fired(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["shots_fired"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Shots Fired per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Shots Fired",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-time", "figure"),
+    [Input("dropdown-team", "value")])
+def summary_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["time"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Sim Time per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Sim Time (s)",
+                      barmode="group")
+
+    return fig
 
 @app.callback(
     Output("asteroids-destroyed", "figure"),
