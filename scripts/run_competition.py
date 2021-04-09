@@ -6,7 +6,7 @@ import sys
 import os
 from functools import partial
 
-from competition.scenarios import portfolio
+from competition.portfolio import portfolio
 from competition.runner import CompetitionRunner
 from competition.plotter import Plotter
 
@@ -41,7 +41,7 @@ controllers = {
 def run_competition(portfolio, controllers):
     # Run the competition with graphics
     runner = CompetitionRunner(portfolio=portfolio, controllers=controllers)
-    data = runner.run_all(graphics_on=True)
+    runner.run_all(opt_settings={"time_limit": 60})
 
 
 def run_evaluation(portfolio, controllers):

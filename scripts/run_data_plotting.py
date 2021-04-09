@@ -244,6 +244,29 @@ def summary_time(teams, scenario):
 
     return fig
 
+# Scenario-specific
+@app.callback(
+    Output("table", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def scenario_data_table(teams, scenario):
+    if scenario == "summary":
+        raise dash.exceptions.PreventUpdate
+
+    categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
+                  "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
+
+    data = [[plotter.data[team][scenario][label] for idx, team in enumerate(teams)] for label in categories]
+
+    table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+                     cells=dict(values=[teams] + data))
+    table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
+
+    fig = go.Figure(table)
+    fig.update_layout(title="Performance Summary")
+
+    return fig
+
+
 @app.callback(
     Output("asteroids-destroyed", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -358,28 +381,6 @@ def graph_eval_times_series(teams, scenario):
                              name=f"{environment_frequency} Hz Limit", mode="lines",
                              marker_color="rgba(0, 0, 0, .8)"))
     return fig
-
-@app.callback(
-    Output("table", "figure"),
-    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def scenario_data_table(teams, scenario):
-    if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
-
-    categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
-                  "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
-
-    data = [[plotter.data[team][scenario][label] for idx, team in enumerate(teams)] for label in categories]
-
-    table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
-                     cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
-
-    fig = go.Figure(table)
-    fig.update_layout(title="Performance Summary")
-
-    return fig
-
 
 # Summary Plots
 if __name__ == "__main__":
