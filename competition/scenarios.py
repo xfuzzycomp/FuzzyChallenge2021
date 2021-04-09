@@ -4,8 +4,8 @@ import numpy as np
 
 # "Simple" Scenarios --------------------------------------------------------------------------------------------------#
 # Threat priority tests
-scenario_asteroid_threat_test_1 = Scenario(
-    name="asteroid_threat_test_1",
+threat_test_1 = Scenario(
+    name="threat_test_1",
     asteroid_states=[{"position": (0, 300), "angle": -90.0, "speed": 40},
                      {"position": (700, 300), "angle": 0.0, "speed": 0},
                      ],
@@ -13,8 +13,8 @@ scenario_asteroid_threat_test_1 = Scenario(
     seed=0
 )
 
-scenario_asteroid_threat_test_2 = Scenario(
-    name="asteroid_threat_test_2",
+threat_test_2 = Scenario(
+    name="threat_test_2",
     asteroid_states=[{"position": (800, 300), "angle": 90.0, "speed": 40},
                      {"position": (100, 300), "angle": 0.0, "speed": 0},
                      ],
@@ -22,8 +22,8 @@ scenario_asteroid_threat_test_2 = Scenario(
     seed=0
 )
 
-scenario_asteroid_threat_test_3 = Scenario(
-    name="asteroid_threat_test_3",
+threat_test_3 = Scenario(
+    name="threat_test_3",
     asteroid_states=[{"position": (400, 0), "angle": 0.0, "speed": 40},
                      {"position": (400, 550), "angle": 0.0, "speed": 0},
                      ],
@@ -31,8 +31,8 @@ scenario_asteroid_threat_test_3 = Scenario(
     seed=0
 )
 
-scenario_asteroid_threat_test_4 = Scenario(
-    name="asteroid_threat_test_4",
+threat_test_4 = Scenario(
+    name="threat_test_4",
     asteroid_states=[{"position": (400, 600), "angle": 180.0, "speed": 40},
                      {"position": (400, 50), "angle": 0.0, "speed": 0},
                      ],
@@ -42,80 +42,80 @@ scenario_asteroid_threat_test_4 = Scenario(
 
 # Accuracy tests
 
-scenario_asteroid_accuracy_test_1 = Scenario(
-    name="asteroid_accuracy_test_1",
+accuracy_test_1 = Scenario(
+    name="accuracy_test_1",
     asteroid_states=[{"position": (400, 500), "angle": 90.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_2 = Scenario(
-    name="asteroid_accuracy_test_2",
+accuracy_test_2 = Scenario(
+    name="accuracy_test_2",
     asteroid_states=[{"position": (400, 500), "angle": -90.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_3 = Scenario(
-    name="asteroid_accuracy_test_3",
+accuracy_test_3 = Scenario(
+    name="accuracy_test_3",
     asteroid_states=[{"position": (100, 100), "angle": 0.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_4 = Scenario(
-    name="asteroid_accuracy_test_4",
+accuracy_test_4 = Scenario(
+    name="accuracy_test_4",
     asteroid_states=[{"position": (700, 100), "angle": 0.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_5 = Scenario(
-    name="asteroid_accuracy_test_5",
+accuracy_test_5 = Scenario(
+    name="accuracy_test_5",
     asteroid_states=[{"position": (100, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_6 = Scenario(
-    name="asteroid_accuracy_test_6",
+accuracy_test_6 = Scenario(
+    name="accuracy_test_6",
     asteroid_states=[{"position": (700, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100)},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_7 = Scenario(
-    name="asteroid_accuracy_test_7",
+accuracy_test_7 = Scenario(
+    name="accuracy_test_7",
     asteroid_states=[{"position": (400, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100), "angle": 90.0},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_8 = Scenario(
-    name="asteroid_accuracy_test_8",
+accuracy_test_8 = Scenario(
+    name="accuracy_test_8",
     asteroid_states=[{"position": (400, 500), "angle": 180.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (400, 100), "angle": -90.0},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_9 = Scenario(
-    name="asteroid_accuracy_test_9",
+accuracy_test_9 = Scenario(
+    name="accuracy_test_9",
     asteroid_states=[{"position": (100, 500), "angle": -135.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (700, 100), "angle": -90.0},
     seed=0
 )
 
-scenario_asteroid_accuracy_test_10 = Scenario(
-    name="asteroid_accuracy_test_10",
+accuracy_test_10 = Scenario(
+    name="accuracy_test_10",
     asteroid_states=[{"position": (700, 500), "angle": 135.0, "speed": 120, "size": 1},
                      ],
     ship_state={"position": (100, 100), "angle": 90.0},
@@ -123,8 +123,8 @@ scenario_asteroid_accuracy_test_10 = Scenario(
 )
 
 # Scenario which uses default ship state and placed asteroids in a line which fly toward the ship
-scenario_asteroid_wall = Scenario(
-    name="asteroid_wall",
+wall = Scenario(
+    name="wall",
     asteroid_states=[{"position": (200, 200), "angle": 0.0, "speed": 40},
                      {"position": (300, 200), "angle": 0.0, "speed": 40},
                      {"position": (400, 200), "angle": 0.0, "speed": 40},
@@ -136,8 +136,8 @@ scenario_asteroid_wall = Scenario(
 )
 
 # "Easy" wall scenario with default ship state, starts on left and moves right
-scenario_asteroid_wall_left_easy = Scenario(
-    name="asteroid_wall_left_easy",
+wall_left_easy = Scenario(
+    name="wall_left_easy",
     asteroid_states=[{"position": (0, 100), "angle": -90.0, "speed": 60},
                      {"position": (0, 200), "angle": -90.0, "speed": 60},
                      {"position": (0, 300), "angle": -90.0, "speed": 60},
@@ -149,8 +149,8 @@ scenario_asteroid_wall_left_easy = Scenario(
 )
 
 # "Easy" wall scenario with default ship state, starts on right and moves left
-scenario_asteroid_wall_right_easy = Scenario(
-    name="asteroid_wall_right_easy",
+wall_right_easy = Scenario(
+    name="wall_right_easy",
     asteroid_states=[{"position": (800, 100), "angle": 90.0, "speed": 60},
                      {"position": (800, 200), "angle": 90.0, "speed": 60},
                      {"position": (800, 300), "angle": 90.0, "speed": 60},
@@ -162,8 +162,8 @@ scenario_asteroid_wall_right_easy = Scenario(
 )
 
 # "Easy" wall scenario with default ship state, starts at the top and moves downward
-scenario_asteroid_wall_top_easy = Scenario(
-    name="asteroid_wall_top_easy",
+wall_top_easy = Scenario(
+    name="wall_top_easy",
     asteroid_states=[{"position": (100, 600), "angle": 180.0, "speed": 60},
                      {"position": (200, 600), "angle": 180.0, "speed": 60},
                      {"position": (300, 600), "angle": 180.0, "speed": 60},
@@ -177,8 +177,8 @@ scenario_asteroid_wall_top_easy = Scenario(
 )
 
 # "Easy" wall scenario with default ship state, starts at the top and moves downward
-scenario_asteroid_wall_bottom_easy = Scenario(
-    name="asteroid_wall_bottom_easy",
+wall_bottom_easy = Scenario(
+    name="wall_bottom_easy",
     asteroid_states=[{"position": (100, 0), "angle": 0.0, "speed": 60},
                      {"position": (200, 0), "angle": 0.0, "speed": 60},
                      {"position": (300, 0), "angle": 0.0, "speed": 60},
@@ -204,8 +204,8 @@ ast_states = []
 for ii in range(len(init_angle)):
     ast_states.append({"position": (ast_x[ii], ast_y[ii]), "angle": init_angle[ii], "speed": 30})
 
-scenario_asteroid_ring_closing = Scenario(
-    name="asteroid_ring_closing",
+ring_closing = Scenario(
+    name="ring_closing",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300)},
     seed=0
@@ -223,8 +223,8 @@ ast_states = []
 for ii in range(len(init_angle)):
     ast_states.append({"position": (ast_x[ii], ast_y[ii]), "angle": init_angle[ii], "speed": 0})
 
-scenario_asteroid_ring_static_left = Scenario(
-    name="asteroid_ring_static_left",
+ring_static_left = Scenario(
+    name="ring_static_left",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300)},
     seed=0
@@ -241,8 +241,8 @@ ast_states = []
 for ii in range(len(init_angle)):
     ast_states.append({"position": (ast_x[ii], ast_y[ii]), "angle": init_angle[ii], "speed": 0})
 
-scenario_asteroid_ring_static_right = Scenario(
-    name="asteroid_ring_static_right",
+ring_static_right = Scenario(
+    name="ring_static_right",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300)},
     seed=0
@@ -259,8 +259,8 @@ ast_states = []
 for ii in range(len(init_angle)):
     ast_states.append({"position": (ast_x[ii], ast_y[ii]), "angle": init_angle[ii], "speed": 0})
 
-scenario_asteroid_ring_static_top = Scenario(
-    name="asteroid_ring_static_top",
+ring_static_top = Scenario(
+    name="ring_static_top",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300)},
     seed=0
@@ -277,8 +277,8 @@ ast_states = []
 for ii in range(len(init_angle)):
     ast_states.append({"position": (ast_x[ii], ast_y[ii]), "angle": init_angle[ii], "speed": 0})
 
-scenario_asteroid_ring_static_bottom = Scenario(
-    name="asteroid_ring_static_bottom",
+ring_static_bottom = Scenario(
+    name="ring_static_bottom",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300)},
     seed=0
@@ -305,8 +305,8 @@ for ii in range(num_x):
 ast_states.append({"position": (50, 266), "angle": -90.0, "speed": 0})
 ast_states.append({"position": (50, 332), "angle": -90.0, "speed": 0})
 
-scenario_asteroid_corridor_left = Scenario(
-    name="asteroid_corridor_left",
+corridor_left = Scenario(
+    name="corridor_left",
     asteroid_states=ast_states,
     ship_state={"position": (700, 300)},
     seed=0
@@ -317,8 +317,8 @@ ast_states = ast_states[:-2]
 ast_states.append({"position": (800, 266), "angle": 90.0, "speed": 20})
 ast_states.append({"position": (800, 332), "angle": 90.0, "speed": 20})
 
-scenario_asteroid_corridor_right = Scenario(
-    name="asteroid_corridor_right",
+corridor_right = Scenario(
+    name="corridor_right",
     asteroid_states=ast_states,
     ship_state={"position": (100, 300)},
     seed=0
@@ -342,8 +342,8 @@ for ii in range(num_x):
 ast_states.append({"position": (366, 600), "angle": 180.0, "speed": 20})
 ast_states.append({"position": (432, 600), "angle": 180.0, "speed": 20})
 
-scenario_asteroid_corridor_top = Scenario(
-    name="asteroid_corridor_top",
+corridor_top = Scenario(
+    name="corridor_top",
     asteroid_states=ast_states,
     ship_state={"position": (400, 100)},
     seed=0
@@ -355,8 +355,8 @@ ast_states = ast_states[:-2]
 ast_states.append({"position": (366, 0), "angle": 0.0, "speed": 20})
 ast_states.append({"position": (432, 0), "angle": 0.0, "speed": 20})
 
-scenario_asteroid_corridor_bottom = Scenario(
-    name="asteroid_corridor_bottom",
+corridor_bottom = Scenario(
+    name="corridor_bottom",
     asteroid_states=ast_states,
     ship_state={"position": (400, 500)},
     seed=0
@@ -379,8 +379,8 @@ for ii in range(num_x):
     for jj in range(num_y):
         ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": -90.0, "speed": 120})
 
-scenario_asteroid_moving_corridor_1 = Scenario(
-    name="asteroid_moving_corridor_1",
+moving_corridor_1 = Scenario(
+    name="moving_corridor_1",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300), "angle": 90},
     seed=0
@@ -400,8 +400,8 @@ for ii in range(num_x):
     for jj in range(num_y):
         ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": 90.0, "speed": 120})
 
-scenario_asteroid_moving_corridor_2 = Scenario(
-    name="asteroid_moving_corridor_2",
+moving_corridor_2 = Scenario(
+    name="moving_corridor_2",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300), "angle": -90},
     seed=0
@@ -422,8 +422,8 @@ for ii in range(num_x):
     for jj in range(num_y):
         ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": 180.0, "speed": 120})
 
-scenario_asteroid_moving_corridor_3 = Scenario(
-    name="asteroid_moving_corridor_3",
+moving_corridor_3 = Scenario(
+    name="moving_corridor_3",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300), "angle": 0},
     seed=0
@@ -444,8 +444,8 @@ for ii in range(num_x):
     for jj in range(num_y):
         ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": 0.0, "speed": 120})
 
-scenario_asteroid_moving_corridor_4 = Scenario(
-    name="asteroid_moving_corridor_4",
+moving_corridor_4 = Scenario(
+    name="moving_corridor_4",
     asteroid_states=ast_states,
     ship_state={"position": (400, 300), "angle": 180},
     seed=0
@@ -467,8 +467,8 @@ for ii in range(num_x):
                 abs(-1.5 * ast_x[ii, jj] + 1200 - ast_y[ii, jj]) <= 160):
             ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": -90.0, "speed": 30})
 
-scenario_asteroid_moving_corridor_angled_1 = Scenario(
-    name="asteroid_moving_corridor_angled_1",
+moving_corridor_angled_1 = Scenario(
+    name="moving_corridor_angled_1",
     asteroid_states=ast_states,
     ship_state={"position": (750, 50), "angle": 90},
     seed=0
@@ -490,8 +490,8 @@ for ii in range(num_x):
                 abs(1.5 * ast_x[ii, jj] - 600 - ast_y[ii, jj]) <= 160):
             ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": -90.0, "speed": 30})
 
-scenario_asteroid_moving_corridor_angled_2 = Scenario(
-    name="asteroid_moving_corridor_angled_2",
+moving_corridor_angled_2 = Scenario(
+    name="moving_corridor_angled_2",
     asteroid_states=ast_states,
     ship_state={"position": (750, 550), "angle": 90},
     seed=0
@@ -512,8 +512,8 @@ for ii in range(num_x):
         if not (abs(-(1 / 300) * (ast_x[ii, jj] - 400) ** 2 + 600 - ast_y[ii, jj]) <= 200):
             ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": -90.0, "speed": 30})
 
-scenario_asteroid_moving_corridor_curve_1 = Scenario(
-    name="asteroid_moving_corridor_curve_1",
+moving_corridor_curve_1 = Scenario(
+    name="moving_corridor_curve_1",
     asteroid_states=ast_states,
     ship_state={"position": (550, 500), "angle": 90},
     seed=0
@@ -535,8 +535,8 @@ for ii in range(num_x):
                 abs((1 / 300) * (ast_x[ii, jj] - 400) ** 2 - ast_y[ii, jj]) >= 300):
             ast_states.append({"position": (ast_x[ii, jj], ast_y[ii, jj]), "angle": -90.0, "speed": 120, "size": 1})
 
-scenario_asteroid_moving_corridor_curve_2 = Scenario(
-    name="asteroid_moving_corridor_curve_2",
+moving_corridor_curve_2 = Scenario(
+    name="moving_corridor_curve_2",
     asteroid_states=ast_states,
     ship_state={"position": (550, 100), "angle": 90},
     seed=0
@@ -550,55 +550,46 @@ scenario_asteroid_moving_corridor_curve_2 = Scenario(
 scenario_apocalypse_1 = Scenario(name="apocalypse_1", num_asteroids=50, seed=1)
 # ---------------------------------------------------------------------------------------------------------------------#
 
-# Scenario where 1 "very-small" asteroid is declared
-# Size can be between 1 and 4
-scenario_asteroids_small = Scenario(
-    name="asteroids-small-1",
-    asteroid_states=[{"position": (200, 200), "angle": 0.0, "speed": 0, "size": 1},
-                     ],
-    ship_state={"position": (100, 500)},
-    seed=0
-)
 
 # Forcing wrap scenarios-----------------------------------------------------------------------------------------------#
 # Wrap right scenarios
-scenario_asteroid_wall_right_wrap_1 = Scenario(
-    name="asteroid_wall_right_wrap_1",
-    asteroid_states=[{"position": (600, 0), "angle": -90.0, "speed": 40},
-                     {"position": (600, 100), "angle": -90.0, "speed": 40},
-                     {"position": (600, 200), "angle": -90.0, "speed": 40},
-                     {"position": (600, 300), "angle": -90.0, "speed": 40},
-                     {"position": (600, 400), "angle": -90.0, "speed": 40},
-                     {"position": (600, 500), "angle": -90.0, "speed": 40},
-                     {"position": (600, 600), "angle": -90.0, "speed": 40},
+wall_right_wrap_1 = Scenario(
+    name="wall_right_wrap_1",
+    asteroid_states=[{"position": (600, 0), "angle": -90.0, "speed": 80},
+                     {"position": (600, 100), "angle": -90.0, "speed": 80},
+                     {"position": (600, 200), "angle": -90.0, "speed": 80},
+                     {"position": (600, 300), "angle": -90.0, "speed": 80},
+                     {"position": (600, 400), "angle": -90.0, "speed": 80},
+                     {"position": (600, 500), "angle": -90.0, "speed": 80},
+                     {"position": (600, 600), "angle": -90.0, "speed": 80},
                      ],
     ship_state={"position": (750, 300)},
     seed=0
 )
 
-scenario_asteroid_wall_right_wrap_2 = Scenario(
-    name="asteroid_wall_right_wrap_2",
-    asteroid_states=[{"position": (750, 0), "angle": -90.0, "speed": 40},
-                     {"position": (750, 100), "angle": -90.0, "speed": 40},
-                     {"position": (750, 200), "angle": -90.0, "speed": 40},
-                     {"position": (750, 300), "angle": -90.0, "speed": 40},
-                     {"position": (750, 400), "angle": -90.0, "speed": 40},
-                     {"position": (750, 500), "angle": -90.0, "speed": 40},
-                     {"position": (750, 600), "angle": -90.0, "speed": 40},
+wall_right_wrap_2 = Scenario(
+    name="wall_right_wrap_2",
+    asteroid_states=[{"position": (750, 0), "angle": -90.0, "speed": 80},
+                     {"position": (750, 100), "angle": -90.0, "speed": 80},
+                     {"position": (750, 200), "angle": -90.0, "speed": 80},
+                     {"position": (750, 300), "angle": -90.0, "speed": 80},
+                     {"position": (750, 400), "angle": -90.0, "speed": 80},
+                     {"position": (750, 500), "angle": -90.0, "speed": 80},
+                     {"position": (750, 600), "angle": -90.0, "speed": 80},
                      ],
     ship_state={"position": (50, 300)},
     seed=0
 )
 
-scenario_asteroid_wall_right_wrap_3 = Scenario(
-    name="asteroid_wall_right_wrap_3",
-    asteroid_states=[{"position": (600, 0), "angle": -90.0, "speed": 40},
-                     {"position": (600, 100), "angle": -90.0, "speed": 40},
-                     {"position": (600, 200), "angle": -90.0, "speed": 40},
-                     {"position": (600, 300), "angle": -90.0, "speed": 40},
-                     {"position": (600, 400), "angle": -90.0, "speed": 40},
-                     {"position": (600, 500), "angle": -90.0, "speed": 40},
-                     {"position": (600, 600), "angle": -90.0, "speed": 40},
+wall_right_wrap_3 = Scenario(
+    name="wall_right_wrap_3",
+    asteroid_states=[{"position": (600, 0), "angle": -90.0, "speed": 80},
+                     {"position": (600, 100), "angle": -90.0, "speed": 80},
+                     {"position": (600, 200), "angle": -90.0, "speed": 80},
+                     {"position": (600, 300), "angle": -90.0, "speed": 80},
+                     {"position": (600, 400), "angle": -90.0, "speed": 80},
+                     {"position": (600, 500), "angle": -90.0, "speed": 80},
+                     {"position": (600, 600), "angle": -90.0, "speed": 80},
                      {"position": (200, 0), "angle": -90.0, "speed": 0},
                      {"position": (200, 100), "angle": -90.0, "speed": 0},
                      {"position": (200, 200), "angle": -90.0, "speed": 0},
@@ -611,15 +602,15 @@ scenario_asteroid_wall_right_wrap_3 = Scenario(
     seed=0
 )
 
-scenario_asteroid_wall_right_wrap_4 = Scenario(
-    name="asteroid_wall_right_wrap_4",
-    asteroid_states=[{"position": (750, 0), "angle": -90.0, "speed": 40},
-                     {"position": (750, 100), "angle": -90.0, "speed": 40},
-                     {"position": (750, 200), "angle": -90.0, "speed": 40},
-                     {"position": (750, 300), "angle": -90.0, "speed": 40},
-                     {"position": (750, 400), "angle": -90.0, "speed": 40},
-                     {"position": (750, 500), "angle": -90.0, "speed": 40},
-                     {"position": (750, 600), "angle": -90.0, "speed": 40},
+wall_right_wrap_4 = Scenario(
+    name="wall_right_wrap_4",
+    asteroid_states=[{"position": (750, 0), "angle": -90.0, "speed": 80},
+                     {"position": (750, 100), "angle": -90.0, "speed": 80},
+                     {"position": (750, 200), "angle": -90.0, "speed": 80},
+                     {"position": (750, 300), "angle": -90.0, "speed": 80},
+                     {"position": (750, 400), "angle": -90.0, "speed": 80},
+                     {"position": (750, 500), "angle": -90.0, "speed": 80},
+                     {"position": (750, 600), "angle": -90.0, "speed": 80},
                      {"position": (200, 0), "angle": -90.0, "speed": 0},
                      {"position": (200, 100), "angle": -90.0, "speed": 0},
                      {"position": (200, 200), "angle": -90.0, "speed": 0},
@@ -633,43 +624,43 @@ scenario_asteroid_wall_right_wrap_4 = Scenario(
 )
 
 # Wrap left scenarios
-scenario_asteroid_wall_left_wrap_1 = Scenario(
-    name="asteroid_wall_right_wrap_1",
-    asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 40},
-                     {"position": (200, 100), "angle": 90.0, "speed": 40},
-                     {"position": (200, 200), "angle": 90.0, "speed": 40},
-                     {"position": (200, 300), "angle": 90.0, "speed": 40},
-                     {"position": (200, 400), "angle": 90.0, "speed": 40},
-                     {"position": (200, 500), "angle": 90.0, "speed": 40},
-                     {"position": (200, 600), "angle": 90.0, "speed": 40},
+wall_left_wrap_1 = Scenario(
+    name="wall_right_wrap_1",
+    asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 80},
+                     {"position": (200, 100), "angle": 90.0, "speed": 80},
+                     {"position": (200, 200), "angle": 90.0, "speed": 80},
+                     {"position": (200, 300), "angle": 90.0, "speed": 80},
+                     {"position": (200, 400), "angle": 90.0, "speed": 80},
+                     {"position": (200, 500), "angle": 90.0, "speed": 80},
+                     {"position": (200, 600), "angle": 90.0, "speed": 80},
                      ],
     ship_state={"position": (50, 300)},
     seed=0
 )
 
-scenario_asteroid_wall_left_wrap_2 = Scenario(
-    name="asteroid_wall_right_wrap_2",
-    asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 40},
-                     {"position": (50, 100), "angle": 90.0, "speed": 40},
-                     {"position": (50, 200), "angle": 90.0, "speed": 40},
-                     {"position": (50, 300), "angle": 90.0, "speed": 40},
-                     {"position": (50, 400), "angle": 90.0, "speed": 40},
-                     {"position": (50, 500), "angle": 90.0, "speed": 40},
-                     {"position": (50, 600), "angle": 90.0, "speed": 40},
+wall_left_wrap_2 = Scenario(
+    name="wall_right_wrap_2",
+    asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 80},
+                     {"position": (50, 100), "angle": 90.0, "speed": 80},
+                     {"position": (50, 200), "angle": 90.0, "speed": 80},
+                     {"position": (50, 300), "angle": 90.0, "speed": 80},
+                     {"position": (50, 400), "angle": 90.0, "speed": 80},
+                     {"position": (50, 500), "angle": 90.0, "speed": 80},
+                     {"position": (50, 600), "angle": 90.0, "speed": 80},
                      ],
     ship_state={"position": (750, 300)},
     seed=0
 )
 
-scenario_asteroid_wall_left_wrap_3 = Scenario(
-    name="asteroid_wall_right_wrap_3",
-    asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 40},
-                     {"position": (200, 100), "angle": 90.0, "speed": 40},
-                     {"position": (200, 200), "angle": 90.0, "speed": 40},
-                     {"position": (200, 300), "angle": 90.0, "speed": 40},
-                     {"position": (200, 400), "angle": 90.0, "speed": 40},
-                     {"position": (200, 500), "angle": 90.0, "speed": 40},
-                     {"position": (200, 600), "angle": 90.0, "speed": 40},
+wall_left_wrap_3 = Scenario(
+    name="wall_right_wrap_3",
+    asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 80},
+                     {"position": (200, 100), "angle": 90.0, "speed": 80},
+                     {"position": (200, 200), "angle": 90.0, "speed": 80},
+                     {"position": (200, 300), "angle": 90.0, "speed": 80},
+                     {"position": (200, 400), "angle": 90.0, "speed": 80},
+                     {"position": (200, 500), "angle": 90.0, "speed": 80},
+                     {"position": (200, 600), "angle": 90.0, "speed": 80},
                      {"position": (600, 0), "angle": -90.0, "speed": 0},
                      {"position": (600, 100), "angle": -90.0, "speed": 0},
                      {"position": (600, 200), "angle": -90.0, "speed": 0},
@@ -682,15 +673,15 @@ scenario_asteroid_wall_left_wrap_3 = Scenario(
     seed=0
 )
 
-scenario_asteroid_wall_left_wrap_4 = Scenario(
-    name="asteroid_wall_right_wrap_4",
-    asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 40},
-                     {"position": (50, 100), "angle": 90.0, "speed": 40},
-                     {"position": (50, 200), "angle": 90.0, "speed": 40},
-                     {"position": (50, 300), "angle": 90.0, "speed": 40},
-                     {"position": (50, 400), "angle": 90.0, "speed": 40},
-                     {"position": (50, 500), "angle": 90.0, "speed": 40},
-                     {"position": (50, 600), "angle": 90.0, "speed": 40},
+wall_left_wrap_4 = Scenario(
+    name="wall_right_wrap_4",
+    asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 80},
+                     {"position": (50, 100), "angle": 90.0, "speed": 80},
+                     {"position": (50, 200), "angle": 90.0, "speed": 80},
+                     {"position": (50, 300), "angle": 90.0, "speed": 80},
+                     {"position": (50, 400), "angle": 90.0, "speed": 80},
+                     {"position": (50, 500), "angle": 90.0, "speed": 80},
+                     {"position": (50, 600), "angle": 90.0, "speed": 80},
                      {"position": (600, 0), "angle": -90.0, "speed": 0},
                      {"position": (600, 100), "angle": -90.0, "speed": 0},
                      {"position": (600, 200), "angle": -90.0, "speed": 0},
@@ -704,49 +695,49 @@ scenario_asteroid_wall_left_wrap_4 = Scenario(
 )
 
 # Wrap top scenarios
-scenario_asteroid_wall_top_wrap_1 = Scenario(
-    name="asteroid_wall_top_wrap_1",
-    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 40},
-                     {"position": (100, 400), "angle": 0.0, "speed": 40},
-                     {"position": (200, 400), "angle": 0.0, "speed": 40},
-                     {"position": (300, 400), "angle": 0.0, "speed": 40},
-                     {"position": (400, 400), "angle": 0.0, "speed": 40},
-                     {"position": (500, 400), "angle": 0.0, "speed": 40},
-                     {"position": (600, 400), "angle": 0.0, "speed": 40},
-                     {"position": (700, 400), "angle": 0.0, "speed": 40},
-                     {"position": (800, 400), "angle": 0.0, "speed": 40},
+wall_top_wrap_1 = Scenario(
+    name="wall_top_wrap_1",
+    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 80},
+                     {"position": (100, 400), "angle": 0.0, "speed": 80},
+                     {"position": (200, 400), "angle": 0.0, "speed": 80},
+                     {"position": (300, 400), "angle": 0.0, "speed": 80},
+                     {"position": (400, 400), "angle": 0.0, "speed": 80},
+                     {"position": (500, 400), "angle": 0.0, "speed": 80},
+                     {"position": (600, 400), "angle": 0.0, "speed": 80},
+                     {"position": (700, 400), "angle": 0.0, "speed": 80},
+                     {"position": (800, 400), "angle": 0.0, "speed": 80},
                      ],
     ship_state={"position": (400, 550)},
     seed=0
 )
 
-scenario_asteroid_wall_top_wrap_2 = Scenario(
-    name="asteroid_wall_top_wrap_2",
-    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 40},
-                     {"position": (100, 400), "angle": 0.0, "speed": 40},
-                     {"position": (200, 400), "angle": 0.0, "speed": 40},
-                     {"position": (300, 400), "angle": 0.0, "speed": 40},
-                     {"position": (400, 400), "angle": 0.0, "speed": 40},
-                     {"position": (500, 400), "angle": 0.0, "speed": 40},
-                     {"position": (600, 400), "angle": 0.0, "speed": 40},
-                     {"position": (700, 400), "angle": 0.0, "speed": 40},
-                     {"position": (800, 400), "angle": 0.0, "speed": 40},
+wall_top_wrap_2 = Scenario(
+    name="wall_top_wrap_2",
+    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 80},
+                     {"position": (100, 400), "angle": 0.0, "speed": 80},
+                     {"position": (200, 400), "angle": 0.0, "speed": 80},
+                     {"position": (300, 400), "angle": 0.0, "speed": 80},
+                     {"position": (400, 400), "angle": 0.0, "speed": 80},
+                     {"position": (500, 400), "angle": 0.0, "speed": 80},
+                     {"position": (600, 400), "angle": 0.0, "speed": 80},
+                     {"position": (700, 400), "angle": 0.0, "speed": 80},
+                     {"position": (800, 400), "angle": 0.0, "speed": 80},
                      ],
     ship_state={"position": (400, 50)},
     seed=0
 )
 
-scenario_asteroid_wall_top_wrap_3 = Scenario(
-    name="asteroid_wall_top_wrap_3",
-    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 40},
-                     {"position": (100, 400), "angle": 0.0, "speed": 40},
-                     {"position": (200, 400), "angle": 0.0, "speed": 40},
-                     {"position": (300, 400), "angle": 0.0, "speed": 40},
-                     {"position": (400, 400), "angle": 0.0, "speed": 40},
-                     {"position": (500, 400), "angle": 0.0, "speed": 40},
-                     {"position": (600, 400), "angle": 0.0, "speed": 40},
-                     {"position": (700, 400), "angle": 0.0, "speed": 40},
-                     {"position": (800, 400), "angle": 0.0, "speed": 40},
+wall_top_wrap_3 = Scenario(
+    name="wall_top_wrap_3",
+    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 80},
+                     {"position": (100, 400), "angle": 0.0, "speed": 80},
+                     {"position": (200, 400), "angle": 0.0, "speed": 80},
+                     {"position": (300, 400), "angle": 0.0, "speed": 80},
+                     {"position": (400, 400), "angle": 0.0, "speed": 80},
+                     {"position": (500, 400), "angle": 0.0, "speed": 80},
+                     {"position": (600, 400), "angle": 0.0, "speed": 80},
+                     {"position": (700, 400), "angle": 0.0, "speed": 80},
+                     {"position": (800, 400), "angle": 0.0, "speed": 80},
                      {"position": (0, 200), "angle": 0.0, "speed": 0},
                      {"position": (100, 200), "angle": 0.0, "speed": 0},
                      {"position": (200, 200), "angle": 0.0, "speed": 0},
@@ -761,17 +752,17 @@ scenario_asteroid_wall_top_wrap_3 = Scenario(
     seed=0
 )
 
-scenario_asteroid_wall_top_wrap_4 = Scenario(
-    name="asteroid_wall_top_wrap_4",
-    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 40},
-                     {"position": (100, 400), "angle": 0.0, "speed": 40},
-                     {"position": (200, 400), "angle": 0.0, "speed": 40},
-                     {"position": (300, 400), "angle": 0.0, "speed": 40},
-                     {"position": (400, 400), "angle": 0.0, "speed": 40},
-                     {"position": (500, 400), "angle": 0.0, "speed": 40},
-                     {"position": (600, 400), "angle": 0.0, "speed": 40},
-                     {"position": (700, 400), "angle": 0.0, "speed": 40},
-                     {"position": (800, 400), "angle": 0.0, "speed": 40},
+wall_top_wrap_4 = Scenario(
+    name="wall_top_wrap_4",
+    asteroid_states=[{"position": (0, 400), "angle": 0.0, "speed": 80},
+                     {"position": (100, 400), "angle": 0.0, "speed": 80},
+                     {"position": (200, 400), "angle": 0.0, "speed": 80},
+                     {"position": (300, 400), "angle": 0.0, "speed": 80},
+                     {"position": (400, 400), "angle": 0.0, "speed": 80},
+                     {"position": (500, 400), "angle": 0.0, "speed": 80},
+                     {"position": (600, 400), "angle": 0.0, "speed": 80},
+                     {"position": (700, 400), "angle": 0.0, "speed": 80},
+                     {"position": (800, 400), "angle": 0.0, "speed": 80},
                      {"position": (0, 200), "angle": 0.0, "speed": 0},
                      {"position": (100, 200), "angle": 0.0, "speed": 0},
                      {"position": (200, 200), "angle": 0.0, "speed": 0},
@@ -787,49 +778,49 @@ scenario_asteroid_wall_top_wrap_4 = Scenario(
 )
 
 # Wrap bottom scenarios
-scenario_asteroid_wall_bottom_wrap_1 = Scenario(
-    name="asteroid_wall_bottom_wrap_1",
-    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 40},
-                     {"position": (100, 200), "angle": 180.0, "speed": 40},
-                     {"position": (200, 200), "angle": 180.0, "speed": 40},
-                     {"position": (300, 200), "angle": 180.0, "speed": 40},
-                     {"position": (400, 200), "angle": 180.0, "speed": 40},
-                     {"position": (500, 200), "angle": 180.0, "speed": 40},
-                     {"position": (600, 200), "angle": 180.0, "speed": 40},
-                     {"position": (700, 200), "angle": 180.0, "speed": 40},
-                     {"position": (800, 200), "angle": 180.0, "speed": 40},
+wall_bottom_wrap_1 = Scenario(
+    name="wall_bottom_wrap_1",
+    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 80},
+                     {"position": (100, 200), "angle": 180.0, "speed": 80},
+                     {"position": (200, 200), "angle": 180.0, "speed": 80},
+                     {"position": (300, 200), "angle": 180.0, "speed": 80},
+                     {"position": (400, 200), "angle": 180.0, "speed": 80},
+                     {"position": (500, 200), "angle": 180.0, "speed": 80},
+                     {"position": (600, 200), "angle": 180.0, "speed": 80},
+                     {"position": (700, 200), "angle": 180.0, "speed": 80},
+                     {"position": (800, 200), "angle": 180.0, "speed": 80},
                      ],
     ship_state={"position": (400, 50)},
     seed=0
 )
 
-scenario_asteroid_wall_bottom_wrap_2 = Scenario(
-    name="asteroid_wall_bottom_wrap_2",
-    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 40},
-                     {"position": (100, 200), "angle": 180.0, "speed": 40},
-                     {"position": (200, 200), "angle": 180.0, "speed": 40},
-                     {"position": (300, 200), "angle": 180.0, "speed": 40},
-                     {"position": (400, 200), "angle": 180.0, "speed": 40},
-                     {"position": (500, 200), "angle": 180.0, "speed": 40},
-                     {"position": (600, 200), "angle": 180.0, "speed": 40},
-                     {"position": (700, 200), "angle": 180.0, "speed": 40},
-                     {"position": (800, 200), "angle": 180.0, "speed": 40},
+wall_bottom_wrap_2 = Scenario(
+    name="wall_bottom_wrap_2",
+    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 80},
+                     {"position": (100, 200), "angle": 180.0, "speed": 80},
+                     {"position": (200, 200), "angle": 180.0, "speed": 80},
+                     {"position": (300, 200), "angle": 180.0, "speed": 80},
+                     {"position": (400, 200), "angle": 180.0, "speed": 80},
+                     {"position": (500, 200), "angle": 180.0, "speed": 80},
+                     {"position": (600, 200), "angle": 180.0, "speed": 80},
+                     {"position": (700, 200), "angle": 180.0, "speed": 80},
+                     {"position": (800, 200), "angle": 180.0, "speed": 80},
                      ],
     ship_state={"position": (400, 550)},
     seed=0
 )
 
-scenario_asteroid_wall_bottom_wrap_3 = Scenario(
-    name="asteroid_wall_bottom_wrap_3",
-    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 40},
-                     {"position": (100, 200), "angle": 180.0, "speed": 40},
-                     {"position": (200, 200), "angle": 180.0, "speed": 40},
-                     {"position": (300, 200), "angle": 180.0, "speed": 40},
-                     {"position": (400, 200), "angle": 180.0, "speed": 40},
-                     {"position": (500, 200), "angle": 180.0, "speed": 40},
-                     {"position": (600, 200), "angle": 180.0, "speed": 40},
-                     {"position": (700, 200), "angle": 180.0, "speed": 40},
-                     {"position": (800, 200), "angle": 180.0, "speed": 40},
+wall_bottom_wrap_3 = Scenario(
+    name="wall_bottom_wrap_3",
+    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 80},
+                     {"position": (100, 200), "angle": 180.0, "speed": 80},
+                     {"position": (200, 200), "angle": 180.0, "speed": 80},
+                     {"position": (300, 200), "angle": 180.0, "speed": 80},
+                     {"position": (400, 200), "angle": 180.0, "speed": 80},
+                     {"position": (500, 200), "angle": 180.0, "speed": 80},
+                     {"position": (600, 200), "angle": 180.0, "speed": 80},
+                     {"position": (700, 200), "angle": 180.0, "speed": 80},
+                     {"position": (800, 200), "angle": 180.0, "speed": 80},
                      {"position": (0, 400), "angle": 0.0, "speed": 0},
                      {"position": (100, 400), "angle": 0.0, "speed": 0},
                      {"position": (200, 400), "angle": 0.0, "speed": 0},
@@ -844,17 +835,17 @@ scenario_asteroid_wall_bottom_wrap_3 = Scenario(
     seed=0
 )
 
-scenario_asteroid_wall_bottom_wrap_4 = Scenario(
-    name="asteroid_wall_bottom_wrap_4",
-    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 40},
-                     {"position": (100, 200), "angle": 180.0, "speed": 40},
-                     {"position": (200, 200), "angle": 180.0, "speed": 40},
-                     {"position": (300, 200), "angle": 180.0, "speed": 40},
-                     {"position": (400, 200), "angle": 180.0, "speed": 40},
-                     {"position": (500, 200), "angle": 180.0, "speed": 40},
-                     {"position": (600, 200), "angle": 180.0, "speed": 40},
-                     {"position": (700, 200), "angle": 180.0, "speed": 40},
-                     {"position": (800, 200), "angle": 180.0, "speed": 40},
+wall_bottom_wrap_4 = Scenario(
+    name="wall_bottom_wrap_4",
+    asteroid_states=[{"position": (0, 200), "angle": 180.0, "speed": 80},
+                     {"position": (100, 200), "angle": 180.0, "speed": 80},
+                     {"position": (200, 200), "angle": 180.0, "speed": 80},
+                     {"position": (300, 200), "angle": 180.0, "speed": 80},
+                     {"position": (400, 200), "angle": 180.0, "speed": 80},
+                     {"position": (500, 200), "angle": 180.0, "speed": 80},
+                     {"position": (600, 200), "angle": 180.0, "speed": 80},
+                     {"position": (700, 200), "angle": 180.0, "speed": 80},
+                     {"position": (800, 200), "angle": 180.0, "speed": 80},
                      {"position": (0, 400), "angle": 0.0, "speed": 0},
                      {"position": (100, 400), "angle": 0.0, "speed": 0},
                      {"position": (200, 400), "angle": 0.0, "speed": 0},
@@ -871,7 +862,7 @@ scenario_asteroid_wall_bottom_wrap_4 = Scenario(
 
 # A scenario with a big non moving box
 scenario_big_box = Scenario(
-    name="asteroid_big_box",
+    name="big_box",
     asteroid_states=[{"position": (100, 600), "angle": 0.0, "speed": 0},
                      {"position": (200, 600), "angle": 0.0, "speed": 0},
                      {"position": (300, 600), "angle": 0.0, "speed": 0},
@@ -907,7 +898,7 @@ scenario_big_box = Scenario(
 
 # A scenario with a little non moving box
 scenario_small_box = Scenario(
-    name="asteroid_small_box",
+    name="small_box",
     asteroid_states=[{"position": (200, 500), "angle": 0.0, "speed": 0},
                      {"position": (300, 500), "angle": 0.0, "speed": 0},
                      {"position": (400, 500), "angle": 0.0, "speed": 0},
@@ -1001,63 +992,3 @@ scenario_2_still_corridors = Scenario(
     ship_state={"position": (400, 300)},
     seed=0
 )
-
-portfolio = [
-    scenario_asteroid_wall,
-    scenario_asteroids_small,
-
-    scenario_asteroid_threat_test_1,
-    scenario_asteroid_threat_test_2,
-    scenario_asteroid_threat_test_3,
-    scenario_asteroid_threat_test_4,
-    scenario_asteroid_accuracy_test_1,
-    scenario_asteroid_accuracy_test_2,
-    scenario_asteroid_accuracy_test_3,
-    scenario_asteroid_accuracy_test_4,
-    scenario_asteroid_accuracy_test_5,
-    scenario_asteroid_accuracy_test_6,
-    scenario_asteroid_accuracy_test_7,
-    scenario_asteroid_accuracy_test_8,
-    scenario_asteroid_accuracy_test_9,
-    scenario_asteroid_accuracy_test_10,
-    scenario_asteroid_wall_left_easy,
-    scenario_asteroid_wall_right_easy,
-    scenario_asteroid_wall_top_easy,
-    scenario_asteroid_wall_bottom_easy,
-    scenario_asteroid_ring_closing,
-    scenario_asteroid_ring_static_left,
-    scenario_asteroid_ring_static_right,
-    scenario_asteroid_ring_static_top,
-    scenario_asteroid_ring_static_bottom,
-    scenario_asteroid_corridor_left,
-    scenario_asteroid_corridor_right,
-    scenario_asteroid_corridor_top,
-    scenario_asteroid_corridor_bottom,
-    scenario_asteroid_moving_corridor_1,
-    scenario_asteroid_moving_corridor_2,
-    scenario_asteroid_moving_corridor_3,
-    scenario_asteroid_moving_corridor_4,
-    scenario_asteroid_moving_corridor_angled_1,
-    scenario_asteroid_moving_corridor_angled_2,
-    scenario_asteroid_moving_corridor_curve_1,
-    scenario_asteroid_moving_corridor_curve_2,
-    scenario_asteroid_wall_right_wrap_1,
-    scenario_asteroid_wall_right_wrap_2,
-    scenario_asteroid_wall_right_wrap_3,
-    scenario_asteroid_wall_right_wrap_4,
-    scenario_asteroid_wall_left_wrap_1,
-    scenario_asteroid_wall_left_wrap_2,
-    scenario_asteroid_wall_left_wrap_3,
-    scenario_asteroid_wall_left_wrap_4,
-    scenario_asteroid_wall_top_wrap_1,
-    scenario_asteroid_wall_top_wrap_2,
-    scenario_asteroid_wall_top_wrap_3,
-    scenario_asteroid_wall_top_wrap_4,
-    scenario_asteroid_wall_bottom_wrap_1,
-    scenario_asteroid_wall_bottom_wrap_2,
-    scenario_asteroid_wall_bottom_wrap_3,
-    scenario_asteroid_wall_bottom_wrap_4,
-    scenario_small_box,
-    scenario_big_box,
-    scenario_2_still_corridors,
-]

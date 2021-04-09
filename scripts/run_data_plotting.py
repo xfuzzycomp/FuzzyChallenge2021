@@ -60,23 +60,23 @@ app.layout = html.Div([
 
             html.Div([
                 dcc.Graph(id="asteroids-destroyed")],
-                style={"width": "48%", "display": "inline-block"},
+                style={"width": "95%", "display": "inline-block"},
             ),
             html.Div([
                 dcc.Graph(id="num-asteroids")],
-                style={"width": "48%", "display": "inline-block"},
+                style={"width": "95%", "display": "inline-block"},
             ),
             html.Div([
                 dcc.Graph(id="accuracy")],
-                style={"width": "48%", "display": "inline-block"},
+                style={"width": "95%", "display": "inline-block"},
             ),
             html.Div([
                 dcc.Graph(id="eval-times")],
-                style={"width": "48%", "display": "inline-block"},
+                style={"width": "95%", "display": "inline-block"},
             ),
             html.Div([
                 dcc.Graph(id="eval-times-series")],
-                style={"width": "48%", "display": "inline-block"},
+                style={"width": "95%", "display": "inline-block"},
             ),
 
         ]),
@@ -157,7 +157,7 @@ def graph_eval_times(teams, scenarios):
 
     max_x = max(max(plotter.data[team][scenarios]["num_asteroids"]) for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
-                             name=f'Operating Frequency ({environment_frequency}Hz)', mode="lines",
+                             name=f'{environment_frequency} Hz Limit', mode="lines",
                              marker_color='rgba(0, 0, 0, .8)'))
 
     return fig
@@ -181,7 +181,7 @@ def graph_eval_times_series(teams, scenarios):
 
     max_x = max(plotter.data[team][scenarios]["time"] for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
-                             name=f'Operating Frequency ({environment_frequency}Hz)', mode="lines",
+                             name=f'{environment_frequency} Hz Limit', mode="lines",
                              marker_color='rgba(0, 0, 0, .8)'))
     return fig
 
