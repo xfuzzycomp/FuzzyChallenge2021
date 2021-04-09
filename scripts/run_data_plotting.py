@@ -59,7 +59,7 @@ app.layout = html.Div([
             dcc.Graph(id="summary-shots-fired"),
             dcc.Graph(id="summary-time"),
         ]),
-    ], id="summary-div", style={"background-color": "#FFFFFF", 'display': 'block'}),
+    ], id="summary-div", style={"display": "block"}),
 
     # Graphics Shown on a per scenario basis
     html.Div([
@@ -71,26 +71,48 @@ app.layout = html.Div([
             dcc.Graph(id="eval-times-series"),
             dcc.Graph(id="eval-times"),
         ]),
-    ], id="scenario-div", style={"background-color": "#FFFFFF", 'display': 'none'}),
+    ], id="scenario-div", style={"display": "none"}),
 
-], style={"margin": "0", "padding": "0", "top": "0",})
+], style={"background-color": "#FFFFFF", "margin": "0", "padding": "0", "top": "0",})
 
 
 @app.callback(
-    Output(component_id='summary-div', component_property='style'), Output(component_id='scenario-div', component_property='style'),
+    Output(component_id="summary-div", component_property="style"), Output(component_id="scenario-div", component_property="style"),
     [Input("dropdown-scenario", "value")])
 def toggle_summary_div_visibility(scenarios):
-    if scenarios == 'summary':
-        return {'display': 'block'}, {'display': 'none'}
+    if scenarios == "summary":
+        return {"display": "block"}, {"display": "none"}
     else:
-        return {'display': 'none'}, {'display': 'block'}
+        return {"display": "none"}, {"display": "block"}
 
+
+# # summary callbacks
+# @app.callback(
+#     Output("summary-table", "figure"),
+#     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+# def summary_score(teams, scenarios):
+#     if scenarios != "summary":
+#         return go.Figure()
+#     fig = go.Figure(
+#         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
+#               for idx, team in enumerate(teams)])
+#
+#     fig.update_layout(title="Asteroids Destroyed per Scenario", title_x=0.5,
+#                       legend_title_text="Team",
+#                       xaxis_title="Scenario",
+#                       yaxis_title="Asteroids Destroyed",
+#                       barmode="group")
+#
+#     return fig
 
 # summary callbacks
 @app.callback(
     Output("summary-asteroids-destroyed", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_score(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_score(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -105,8 +127,11 @@ def summary_score(teams):
 
 @app.callback(
     Output("summary-deaths", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_deaths(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_deaths(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["deaths"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -121,8 +146,11 @@ def summary_deaths(teams):
 
 @app.callback(
     Output("summary-accuracy", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_accuracy(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_accuracy(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["accuracy"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -137,8 +165,11 @@ def summary_accuracy(teams):
 
 @app.callback(
     Output("summary-distance-travelled", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_distance_travelled(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_distance_travelled(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["distance_travelled"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -153,8 +184,11 @@ def summary_distance_travelled(teams):
 
 @app.callback(
     Output("summary-mean-evaluation-time", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_mean_eval_time(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_mean_eval_time(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["mean_evaluation_time"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -169,8 +203,11 @@ def summary_mean_eval_time(teams):
 
 @app.callback(
     Output("summary-shots-fired", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_shots_fired(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_shots_fired(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["shots_fired"][idx], name=team)
               for idx, team in enumerate(teams)])
@@ -185,8 +222,11 @@ def summary_shots_fired(teams):
 
 @app.callback(
     Output("summary-time", "figure"),
-    [Input("dropdown-team", "value")])
-def summary_time(teams):
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_time(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["time"][idx], name=team)
               for idx, team in enumerate(teams)])

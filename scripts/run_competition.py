@@ -48,7 +48,7 @@ def run_evaluation(portfolio, controllers):
     # Run the competition without graphics to generate data
     runner = CompetitionRunner(portfolio=portfolio, controllers=controllers)
     data = runner.run_all(graphics_on=False)
-    runner.save_file("competition_data2.json", data)
+    runner.save_file("competition_data.json", data)
 
 
 if __name__ == "__main__":

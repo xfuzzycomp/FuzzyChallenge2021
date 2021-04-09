@@ -1,11 +1,10 @@
 import math
-import time
 from typing import Dict, Tuple, Any
 
 from fuzzy_asteroids.util import Scenario
 from fuzzy_asteroids.fuzzy_controller import ControllerBase, SpaceShip
 
-from competition.scenarios import portfolio
+from competition.portfolio import portfolio, show_portfolio, portfolio_dict, show_portfolio_dict
 from competition.runner import CompetitionRunner
 from competition.plotter import Plotter
 
@@ -53,7 +52,7 @@ if __name__ == "__main__":
     # a.save_file("test_file.json", data)
 
     plotter = Plotter("test_file.json")
-    plotter.winner(plotter.data)
+    plotter.winner()
 
     # a = CompetitionRunner(controllers={"controller1": Controller1()})
     # data = a.run_with_graphics(name="controller1", controller=Controller1(), portfolio=_show_portfolio)
