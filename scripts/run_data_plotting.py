@@ -92,7 +92,7 @@ def num_asteroids_over_time(teams, scenarios):
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["asteroids_over_time"])+1).tolist(),
                          y=plotter.data[team][scenarios]["asteroids_over_time"],
-                         mode='lines', name=team)
+                         mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
     fig.update_layout(title="Asteroids Destroyed Over Time", title_x=0.5,
@@ -110,7 +110,7 @@ def num_asteroids_over_time(teams, scenarios):
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["evaluation_times"])+1).tolist(),
                          y=plotter.data[team][scenarios]["num_asteroids"],
-                         mode='lines', name=team)
+                         mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
     fig.update_layout(title="Number of Active Asteroids over Time",
@@ -129,7 +129,7 @@ def num_asteroids_over_time(teams, scenarios):
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"], len(plotter.data[team][scenarios]["accuracy_over_time"])+1).tolist(),
                          y=[val * 100.0  for val in plotter.data[team][scenarios]["accuracy_over_time"]],
-                         mode='lines', name=team)
+                         mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
     fig.update_layout(title="Accuracy over Time", title_x=0.5,
@@ -146,7 +146,7 @@ def graph_eval_times(teams, scenarios):
     fig = go.Figure(
         data=[go.Scatter(x=plotter.data[team][scenarios]["num_asteroids"],
                          y=plotter.data[team][scenarios]["evaluation_times"],
-                         mode='markers', name=team)
+                         mode="markers", name=team)
               for idx, team in enumerate(teams)])
 
     fig.update_layout(title="Controller Complexity (Eval Time Scalability)",
@@ -157,8 +157,8 @@ def graph_eval_times(teams, scenarios):
 
     max_x = max(max(plotter.data[team][scenarios]["num_asteroids"]) for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
-                             name=f'{environment_frequency} Hz Limit', mode="lines",
-                             marker_color='rgba(0, 0, 0, .8)'))
+                             name=f"{environment_frequency} Hz Limit", mode="lines",
+                             marker_color="rgba(0, 0, 0, .8)"))
 
     return fig
 
@@ -171,7 +171,7 @@ def graph_eval_times_series(teams, scenarios):
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenarios]["time"],
                                        len(plotter.data[team][scenarios]["evaluation_times"]) + 1).tolist(),
                          y=plotter.data[team][scenarios]["evaluation_times"],
-                         mode='lines', name=team)
+                         mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
     fig.update_layout(title="Evaluation Time over Scenario", title_x=0.5,
@@ -181,8 +181,8 @@ def graph_eval_times_series(teams, scenarios):
 
     max_x = max(plotter.data[team][scenarios]["time"] for idx, team in enumerate(teams))
     fig.add_trace(go.Scatter(x=[0, max_x], y=[1 / environment_frequency, 1 / environment_frequency],
-                             name=f'{environment_frequency} Hz Limit', mode="lines",
-                             marker_color='rgba(0, 0, 0, .8)'))
+                             name=f"{environment_frequency} Hz Limit", mode="lines",
+                             marker_color="rgba(0, 0, 0, .8)"))
     return fig
 
 @app.callback(
@@ -196,7 +196,7 @@ def data_table(teams, scenarios):
 
     table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
                      cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [None], [None], [None], [None], ['.2f'], ['.2f'], ['.4f'], ['.4f'], ['.4f'], ['.4f']]
+    table.cells.format = [[None], [None], [None], [None], [None], [None], [".2f"], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
 
     fig = go.Figure(table)
 
