@@ -4,14 +4,12 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import plotly.express as ex
 import plotly.graph_objects as go
 
 from competition.plotter import Plotter
 
 environment_frequency = 60  # Hz
 plotter = Plotter(os.path.join(os.path.dirname(__file__), "competition_data.json"))
-# plotter.winner()
 
 app = dash.Dash(__name__)
 

@@ -68,7 +68,7 @@ class CompetitionRunner:
         scores = self._run(name, None, self.portfolio, game)
         return {name: scores}
 
-    def run_all(self, portfolio: List[Scenario] = None, graphics_on=True) -> Dict[str, Dict]:
+    def run_all(self, portfolio: List[Scenario] = None, graphics_on=True, opt_settings: Dict = None) -> Dict[str, Dict]:
         all_data = {}
 
         # Run each controller over the whole portfolio
@@ -76,13 +76,17 @@ class CompetitionRunner:
             data = self.run(name=key,
                             controller=controller,
                             portfolio=portfolio,
-                            graphics_on=graphics_on)
+                            graphics_on=graphics_on,
+                            opt_settings=opt_settings)
 
             all_data.update(**data)
         return all_data
 
-    def run(self, name: str, controller, portfolio: List[Scenario] = None, graphics_on: bool = True) -> Dict[str, Any]:
-        game = self.create_environment(self.visible_settings if graphics_on else self.hidden_settings)
+    def run(self, name: str, controller, portfolio: List[Scenario] = None, graphics_on: bool = True, opt_settings: Dict = None) -> Dict[str, Any]:
+        settings = self.visible_settings if graphics_on else self.hidden_settings
+        settings.update(opt_settings if opt_settings else {})
+
+        game = self.create_environment(settings)
         scores = self._run(name, controller, portfolio, game)
         return {name: scores}
 
@@ -116,9 +120,9 @@ class CompetitionRunner:
         settings.update(**override_settings)
 
         if human_test:
-            return AsteroidGame(settings=settings)
+            return AsteroidGame(settings=override_settings)
         else:
-            return FuzzyAsteroidGame(settings=settings, track_compute_cost=True)
+            return FuzzyAsteroidGame(settings=override_settings, track_compute_cost=True)
 
     @staticmethod
     def _run_game(game, controller, scenario) -> CompetitionScore:
