@@ -51,6 +51,42 @@ app.layout = html.Div([
 
     # Graphics shown only when summary scenario
     # html.Div(style={"background-color": "#F0F8FF"})
+    html.Div([
+        html.Div(dcc.Graph(id="table"), style={"width": "100%", "height": "20%"}, ),
+
+        html.Div([
+
+            html.Div([
+                dcc.Graph(id="summary-asteroids-destroyed")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-deaths")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-accuracy")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-distance-travelled")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-mean-evaluation-time")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-shots-fired")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+            html.Div([
+                dcc.Graph(id="summary-time")],
+                style={"width": "95%", "display": "inline-block"},
+            ),
+
+        ]),
+    ], style={"background-color": "#FFFFFF"}),
 
     # Graphics Shown on a per scenario basis
     html.Div([
@@ -84,7 +120,122 @@ app.layout = html.Div([
 
 ], style={"margin": "0", "padding": "0", "top": "0",})
 
+# summary callbacks
+@app.callback(
+    Output("summary-asteroids-destroyed", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
+              for idx, team in enumerate(teams)])
 
+    fig.update_layout(title="Asteroids Destroyed per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Asteroids Destroyed",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-deaths", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["deaths"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Deaths per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Deaths",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-accuracy", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["accuracy"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Accuracy per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Accuracy",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-distance-travelled", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["distance_travelled"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Distance Travelled per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Distance Travelled",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-mean-evaluation-time", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["mean_evaluation_time"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Mean Evaluation Time per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Mean Evaluation Time (s)",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-shots-fired", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["shots_fired"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Shots Fired per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Shots Fired",
+                      barmode="group")
+
+    return fig
+
+@app.callback(
+    Output("summary-time", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def num_asteroids_over_time(teams):
+    fig = go.Figure(
+        data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["time"][idx], name=team)
+              for idx, team in enumerate(teams)])
+
+    fig.update_layout(title="Sim Time per Scenario", title_x=0.5,
+                      legend_title_text="Team",
+                      xaxis_title="Scenario",
+                      yaxis_title="Sim Time (s)",
+                      barmode="group")
+
+    return fig
+
+
+
+# per scenario callbacks
 @app.callback(
     Output("asteroids-destroyed", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -203,6 +354,8 @@ def data_table(teams, scenarios):
     fig.update_layout(title="Performance Summary")
 
     return fig
+
+
 
 
 # Summary Plots
