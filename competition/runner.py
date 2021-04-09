@@ -87,6 +87,8 @@ class CompetitionRunner:
         settings.update(opt_settings if opt_settings else {})
 
         game = self.create_environment(settings)
+        game.controller_name = name
+
         scores = self._run(name, controller, portfolio, game)
         return {name: scores}
 
