@@ -93,7 +93,7 @@ def toggle_summary_div_visibility(scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_table(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     categories = ["asteroids_hit", "deaths", "accuracy", "distance_travelled", "mean_evaluation_time", "shots_fired",
                   "time"]
@@ -116,7 +116,7 @@ def summary_table(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_score(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
@@ -135,7 +135,7 @@ def summary_score(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_deaths(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["deaths"][idx], name=team)
@@ -154,7 +154,7 @@ def summary_deaths(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_accuracy(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=[acc*100.0 for acc in plotter.metrics["accuracy"][idx]], name=team)
@@ -173,7 +173,7 @@ def summary_accuracy(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_distance_travelled(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["distance_travelled"][idx], name=team)
@@ -192,7 +192,7 @@ def summary_distance_travelled(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_mean_eval_time(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["mean_evaluation_time"][idx], name=team)
@@ -211,7 +211,7 @@ def summary_mean_eval_time(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_shots_fired(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["shots_fired"][idx], name=team)
@@ -230,7 +230,7 @@ def summary_shots_fired(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def summary_time(teams, scenario):
     if scenario != "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["time"][idx], name=team)
@@ -250,7 +250,7 @@ def summary_time(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def scenario_data_table(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
@@ -272,7 +272,7 @@ def scenario_data_table(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def num_asteroids_over_time(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["asteroids_over_time"])+1).tolist(),
@@ -293,7 +293,7 @@ def num_asteroids_over_time(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def num_asteroids_over_time(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["evaluation_times"])+1).tolist(),
@@ -315,7 +315,7 @@ def num_asteroids_over_time(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def num_asteroids_over_time(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["accuracy_over_time"])+1).tolist(),
@@ -335,7 +335,7 @@ def num_asteroids_over_time(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def graph_eval_times(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Scatter(x=plotter.data[team][scenario]["num_asteroids"],
@@ -362,7 +362,7 @@ def graph_eval_times(teams, scenario):
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
 def graph_eval_times_series(teams, scenario):
     if scenario == "summary":
-        raise dash.exceptions.PreventUpdate
+        return go.Figure()
 
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"],
