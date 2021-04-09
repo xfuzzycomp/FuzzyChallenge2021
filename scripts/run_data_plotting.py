@@ -44,37 +44,27 @@ app.layout = html.Div([
                     value="summary",
                 ),
             ], style={"width": "40%", "display": "inline-block"}),
-
-            # html.Div([
-            #     html.P("Scenarios:"),
-            #     dcc.T(
-            #         id="dropdown-scenario",
-            #         options=[{"label": x, "value": x} for x in ["summary"] + plotter.scenarios],
-            #         value=plotter.scenarios[0],
-            #     ),
-            # ], style={"width": "40%", "display": "inline-block"}),
         ], style={"display": "flex", "justify-content": "space-around"}),
 
     ], style={"border-bottom": "3px solid #bbb", "position": "sticky", "top": "0", "width":"100%", "z-index":"100", "background-color": "#F0F8FF", "margin-bottom": 10, "padding-bottom": 10}),
 
-    # Graphics shown only when summary scenario
-    # html.Div(style={"background-color": "#F0F8FF"})
-
-    # Summary plots
+    # Summary plots (only shown during "summary" scenario)
     html.Div([
         html.Div([
-            html.Div([
-                dcc.Graph(id="summary-asteroids-destroyed")],
-                style={"width": "95%", "display": "inline-block"},
-            ),
+            dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
+            # dcc.Graph(id="summary-asteroids-destroyed"),
         ]),
     ], id="summary-div", style={"background-color": "#FFFFFF", 'display': 'block'}),
 
     # Graphics Shown on a per scenario basis
     html.Div([
-        html.Div(dcc.Graph(id="table"), style={"width": "100%"},),
-
         html.Div([
+            dcc.Graph(id="table"),
             dcc.Graph(id="asteroids-destroyed"),
             dcc.Graph(id="num-asteroids"),
             dcc.Graph(id="accuracy"),
@@ -218,14 +208,14 @@ def data_table(teams, scenarios):
     if scenarios == "summary":
         return go.Figure()
 
-    categories = ["stopping_condition", "asteroids_hit", "bullets_fired", "deaths", "exceptions", "time",
+    categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
 
     data = [[plotter.data[team][scenarios][label] for idx, team in enumerate(teams)] for label in categories]
 
     table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
                      cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [None], [None], [None], [None], [".2f"], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
+    table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
 
     fig = go.Figure(table)
 
