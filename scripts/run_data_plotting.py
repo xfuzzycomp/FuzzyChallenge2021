@@ -1,3 +1,11 @@
+import sys
+import os
+
+# Modify path for web app
+if os.path.dirname(__file__) not in sys.path:
+    sys.path.append(os.path.dirname(__file__))
+
+
 import numpy as np
 import dash
 import dash_core_components as dcc
