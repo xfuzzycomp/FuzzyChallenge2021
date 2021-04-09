@@ -270,7 +270,7 @@ def scenario_data_table(teams, scenario):
 @app.callback(
     Output("asteroids-destroyed", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def num_asteroids_over_time(teams, scenario):
+def asteroids_destroyed_over_time(teams, scenario):
     if scenario == "summary":
         return go.Figure()
 
@@ -313,7 +313,7 @@ def num_asteroids_over_time(teams, scenario):
 @app.callback(
     Output("accuracy", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def num_asteroids_over_time(teams, scenario):
+def accuracy_over_time(teams, scenario):
     if scenario == "summary":
         return go.Figure()
 
