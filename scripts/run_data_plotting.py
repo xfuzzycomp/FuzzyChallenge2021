@@ -51,6 +51,7 @@ app.layout = html.Div([
     # Summary plots (only shown during "summary" scenario)
     html.Div([
         html.Div([
+            dcc.Graph(id="summary-table"),
             dcc.Graph(id="summary-asteroids-destroyed"),
             dcc.Graph(id="summary-deaths"),
             dcc.Graph(id="summary-accuracy"),
@@ -86,22 +87,27 @@ def toggle_summary_div_visibility(scenarios):
         return {"display": "none"}, {"display": "block"}
 
 
-# # summary callbacks
+# summary callbacks
 # @app.callback(
 #     Output("summary-table", "figure"),
 #     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-# def summary_score(teams, scenarios):
+# def summary_table(teams, scenarios):
 #     if scenarios != "summary":
 #         return go.Figure()
-#     fig = go.Figure(
-#         data=[go.Bar(x=plotter.scenarios, y=plotter.metrics["asteroids_hit"][idx], name=team)
-#               for idx, team in enumerate(teams)])
 #
-#     fig.update_layout(title="Asteroids Destroyed per Scenario", title_x=0.5,
-#                       legend_title_text="Team",
-#                       xaxis_title="Scenario",
-#                       yaxis_title="Asteroids Destroyed",
-#                       barmode="group")
+#     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
+#                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
+#
+#     data = [[plotter.data[team][scenarios][label] for idx, team in enumerate(teams)] for label in categories]
+#
+#     table = go.Table(
+#         header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+#         cells=dict(values=[teams] + data))
+#     table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"],
+#                           [".4f"]]
+#
+#     fig = go.Figure(table)
+#     fig.update_layout(title="Performance Summary")
 #
 #     return fig
 
@@ -357,7 +363,7 @@ def graph_eval_times_series(teams, scenarios):
 @app.callback(
     Output("table", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-def data_table(teams, scenarios):
+def scenario_data_table(teams, scenarios):
     if scenarios == "summary":
         return go.Figure()
 
@@ -371,7 +377,6 @@ def data_table(teams, scenarios):
     table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
 
     fig = go.Figure(table)
-
     fig.update_layout(title="Performance Summary")
 
     return fig
