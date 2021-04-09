@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import dash
 import dash_core_components as dcc
@@ -9,7 +10,7 @@ import plotly.graph_objects as go
 from competition.plotter import Plotter
 
 environment_frequency = 60  # Hz
-plotter = Plotter("competition_data.json")
+plotter = Plotter(os.path.abspath(os.path.dirname(__file__), "competition_data.json"))
 # plotter.winner()
 
 app = dash.Dash(__name__)
