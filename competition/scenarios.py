@@ -612,7 +612,7 @@ wall_right_wrap_4 = Scenario(
 
 # Wrap left scenarios
 wall_left_wrap_1 = Scenario(
-    name="wall_right_wrap_1",
+    name="wall_left_wrap_1",
     asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 80},
                      {"position": (200, 100), "angle": 90.0, "speed": 80},
                      {"position": (200, 200), "angle": 90.0, "speed": 80},
@@ -626,7 +626,7 @@ wall_left_wrap_1 = Scenario(
 )
 
 wall_left_wrap_2 = Scenario(
-    name="wall_right_wrap_2",
+    name="wall_left_wrap_2",
     asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 80},
                      {"position": (50, 100), "angle": 90.0, "speed": 80},
                      {"position": (50, 200), "angle": 90.0, "speed": 80},
@@ -640,7 +640,7 @@ wall_left_wrap_2 = Scenario(
 )
 
 wall_left_wrap_3 = Scenario(
-    name="wall_right_wrap_3",
+    name="wall_left_wrap_3",
     asteroid_states=[{"position": (200, 0), "angle": 90.0, "speed": 80},
                      {"position": (200, 100), "angle": 90.0, "speed": 80},
                      {"position": (200, 200), "angle": 90.0, "speed": 80},
@@ -661,7 +661,7 @@ wall_left_wrap_3 = Scenario(
 )
 
 wall_left_wrap_4 = Scenario(
-    name="wall_right_wrap_4",
+    name="wall_left_wrap_4",
     asteroid_states=[{"position": (50, 0), "angle": 90.0, "speed": 80},
                      {"position": (50, 100), "angle": 90.0, "speed": 80},
                      {"position": (50, 200), "angle": 90.0, "speed": 80},

@@ -108,6 +108,7 @@ def summary_table(teams, scenario):
 
     return fig
 
+
 # summary callbacks
 @app.callback(
     Output("summary-asteroids-destroyed", "figure"),
@@ -129,6 +130,7 @@ def summary_score(teams, scenario):
 
     return fig
 
+
 @app.callback(
     Output("summary-deaths", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -149,6 +151,7 @@ def summary_deaths(teams, scenario):
 
     return fig
 
+
 @app.callback(
     Output("summary-accuracy", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -164,10 +167,11 @@ def summary_accuracy(teams, scenario):
     fig.update_layout(title="Accuracy per Scenario", title_x=0.5,
                       legend_title_text="Team",
                       xaxis_title="Scenario",
-                      yaxis_title="Accuracy",
+                      yaxis_title="Accuracy (%)",
                       barmode="group")
 
     return fig
+
 
 @app.callback(
     Output("summary-distance-travelled", "figure"),
@@ -189,6 +193,7 @@ def summary_distance_travelled(teams, scenario):
 
     return fig
 
+
 @app.callback(
     Output("summary-mean-evaluation-time", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -208,6 +213,7 @@ def summary_mean_eval_time(teams, scenario):
                       barmode="group")
 
     return fig
+
 
 @app.callback(
     Output("summary-shots-fired", "figure"),
@@ -229,6 +235,7 @@ def summary_shots_fired(teams, scenario):
 
     return fig
 
+
 @app.callback(
     Output("summary-time", "figure"),
     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
@@ -248,6 +255,7 @@ def summary_time(teams, scenario):
                       barmode="group")
 
     return fig
+
 
 # Scenario-specific
 @app.callback(
@@ -324,7 +332,7 @@ def accuracy_over_time(teams, scenario):
 
     fig = go.Figure(
         data=[go.Scatter(x=np.linspace(0, plotter.data[team][scenario]["time"], len(plotter.data[team][scenario]["accuracy_over_time"])+1).tolist(),
-                         y=[val * 100.0  for val in plotter.data[team][scenario]["accuracy_over_time"]],
+                         y=[val * 100.0 for val in plotter.data[team][scenario]["accuracy_over_time"]],
                          mode="lines", name=team)
               for idx, team in enumerate(teams)])
 
@@ -386,6 +394,7 @@ def graph_eval_times_series(teams, scenario):
                              name=f"{environment_frequency} Hz Limit", mode="lines",
                              marker_color="rgba(0, 0, 0, .8)"))
     return fig
+
 
 # Summary Plots
 if __name__ == "__main__":
