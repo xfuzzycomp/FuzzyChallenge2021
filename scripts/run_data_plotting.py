@@ -88,28 +88,27 @@ def toggle_summary_div_visibility(scenarios):
 
 
 # summary callbacks
-# @app.callback(
-#     Output("summary-table", "figure"),
-#     [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
-# def summary_table(teams, scenarios):
-#     if scenarios != "summary":
-#         return go.Figure()
-#
-#     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
-#                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
-#
-#     data = [[plotter.data[team][scenarios][label] for idx, team in enumerate(teams)] for label in categories]
-#
-#     table = go.Table(
-#         header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
-#         cells=dict(values=[teams] + data))
-#     table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"],
-#                           [".4f"]]
-#
-#     fig = go.Figure(table)
-#     fig.update_layout(title="Performance Summary")
-#
-#     return fig
+@app.callback(
+    Output("summary-table", "figure"),
+    [Input("dropdown-team", "value"), Input("dropdown-scenario", "value")])
+def summary_table(teams, scenarios):
+    if scenarios != "summary":
+        return go.Figure()
+
+    categories = ["asteroids_hit", "deaths", "accuracy", "distance_travelled", "mean_evaluation_time", "shots_fired",
+                  "time"]
+
+    data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)] for label in categories]
+
+    table = go.Table(
+        header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+        cells=dict(values=[teams] + data))
+    table.cells.format = [[None], [None], [None], [".2f"], [".0f"], [".4f"], [None], [".2f"]]
+
+    fig = go.Figure(table)
+    fig.update_layout(title="Performance Summary")
+
+    return fig
 
 # summary callbacks
 @app.callback(
