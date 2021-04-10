@@ -14,16 +14,16 @@ def run_competition(portfolio, controllers):
 
 if __name__ == "__main__":
     # Run the competition on the portfolio with graphics for the competition for all
-    # run_competition(portfolio=portfolio, controllers=controllers)
+    run_competition(portfolio=portfolio, controllers=controllers)
 
     """
     Run the competition individually for each team
     """
     # Run SamKing
-    # run_competition(portfolio=portfolio, controllers={"SamKing": controllers["SamKing"]})
+    # run_competition(portfolio=show_portfolio, controllers={"SamKing": controllers["SamKing"]})
 
-    # # Run HeiTerry
-    # run_competition(portfolio=portfolio, controllers={"HeiTerry": controllers["HeiTerry"]})
+    # Run HeiTerry
+    # run_competition(portfolio=show_portfolio, controllers={"HeiTerry": controllers["HeiTerry"]})
 
     # # Run Team Asimov
-    # run_competition(portfolio=portfolio, controllers={"TeamAsimov": controllers["TeamAsimov"]})
+    # run_competition(portfolio=show_portfolio, controllers={"TeamAsimov": controllers["TeamAsimov"]})

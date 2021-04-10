@@ -118,13 +118,13 @@ class CompetitionRunner:
 
     @staticmethod
     def create_environment(override_settings, human_test=False) -> AsteroidGame:
-        settings = {"frequency": 60, "time_limit": 100}
+        settings = {"time_limit": 100}
         settings.update(**override_settings)
 
         if human_test:
-            return AsteroidGame(settings=override_settings)
+            return AsteroidGame(settings=settings)
         else:
-            return FuzzyAsteroidGame(settings=override_settings, track_compute_cost=True)
+            return FuzzyAsteroidGame(settings=settings, track_compute_cost=True)
 
     @staticmethod
     def _run_game(game, controller, scenario) -> CompetitionScore:
