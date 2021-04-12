@@ -96,12 +96,12 @@ def summary_table(teams, scenario):
     categories = ["asteroids_hit", "deaths", "accuracy", "distance_travelled", "mean_evaluation_time", "shots_fired",
                   "time"]
 
-    data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)] for label in categories]
+    data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)] if label != "accuracy" else [float(sum(plotter.metrics["asteroids_hit"][idx]))/float(sum(plotter.metrics["shots_fired"][idx])) for idx, team in enumerate(teams)] for label in categories]
 
     table = go.Table(
         header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
         cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [None], [".2f"], [".0f"], [".4f"], [None], [".2f"]]
+    table.cells.format = [[None], [None], [None], [".4f"], [".0f"], [".4f"], [None], [".2f"]]
 
     fig = go.Figure(table)
     fig.update_layout(title="Performance Summary")
