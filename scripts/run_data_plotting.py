@@ -95,15 +95,19 @@ def summary_table(teams, scenario):
 
     categories = ["asteroids_hit", "deaths", "accuracy", "distance_travelled", "mean_evaluation_time", "shots_fired",
                   "time"]
+    units = ["", "", " (%)", " (units)", " (ms)", "", " (s)"]
 
-    data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)]
-            if label != "accuracy" else [float(sum(plotter.metrics["asteroids_hit"][idx]))/float(sum(plotter.metrics["shots_fired"][idx])) * 100.0 for idx, team in enumerate(teams)]
-            for label in categories]
+    data = [[float(sum(plotter.metrics["asteroids_hit"][idx]))/float(sum(plotter.metrics["shots_fired"][idx])) * 100.0 for idx, team in enumerate(teams)]
+            if label == "accuracy" else
+            [float(sum(plotter.metrics[label][idx]))/float(len(plotter.scenarios)) * 1000.0 for idx, team in enumerate(teams)]
+            if label == "mean_evaluation_time"
+            else [sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)] for label in categories]
 
     table = go.Table(
-        header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+        header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_"))+units[idx] for idx, cat in
+                                       enumerate(categories)]),
         cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [None], [".4f"], [".0f"], [".4f"], [None], [".2f"]]
+    table.cells.format = [[None], [None], [None], [".2f"], [".0f"], [".2f"], [None], [".2f"]]
 
     fig = go.Figure(table)
     fig.update_layout(title="Performance Summary")
@@ -269,12 +273,17 @@ def scenario_data_table(teams, scenario):
 
     categories = ["stopping_condition", "time", "asteroids_hit", "bullets_fired", "deaths", "exceptions",
                   "distance_travelled", "mean_eval_time", "median_eval_time", "min_eval_time", "max_eval_time"]
+    units = ["", " (s)", "", "", "", "", " (units)", " (ms)", " (ms)", " (ms)", " (ms)"]
 
-    data = [[plotter.data[team][scenario][label] for idx, team in enumerate(teams)] for label in categories]
+    data = [[plotter.data[team][scenario][label] * 1000.0 for idx, team in enumerate(teams)]
+            if label == "mean_eval_time" or label == "median_eval_time" or label == "min_eval_time" or label == "max_eval_time"
+            else [plotter.data[team][scenario][label] for idx, team in enumerate(teams)]
+            for label in categories]
 
-    table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_")) for cat in categories]),
+    table = go.Table(header=dict(values=["Team"] + [" ".join(c.capitalize() for c in cat.split("_"))+units[idx]
+                                                    for idx, cat in enumerate(categories)]),
                      cells=dict(values=[teams] + data))
-    table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".4f"], [".4f"], [".4f"], [".4f"]]
+    table.cells.format = [[None], [None], [".2f"], [None], [None], [None], [None], [".2f"], [".2f"], [".2f"], [".2f"], [".2f"]]
 
     fig = go.Figure(table)
     fig.update_layout(title="Performance Summary")
