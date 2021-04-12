@@ -97,7 +97,7 @@ def summary_table(teams, scenario):
                   "time"]
 
     data = [[sum(plotter.metrics[label][idx]) for idx, team in enumerate(teams)]
-            if label != "accuracy" else [float(sum(plotter.metrics["asteroids_hit"][idx]))/float(sum(plotter.metrics["shots_fired"][idx])) for idx, team in enumerate(teams)]
+            if label != "accuracy" else [float(sum(plotter.metrics["asteroids_hit"][idx]))/float(sum(plotter.metrics["shots_fired"][idx])) * 100.0 for idx, team in enumerate(teams)]
             for label in categories]
 
     table = go.Table(
