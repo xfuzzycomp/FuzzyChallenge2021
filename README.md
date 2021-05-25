@@ -9,6 +9,8 @@ With git installed on your computer, use the following command within the
 project repo directory:
 
     git submodule update --init --recursive
+    
+This will use git to clone and pull down the competitor repositories into your local repo.
 
 ## Installing dependencies
 
