@@ -1,4 +1,4 @@
-git+https://github.com/TimArnettThales/FuzzyAsteroids.git@master#egg=fuzzy_asteroids
+fuzzy_asteroids==1.2.2
 arcade
 numpy
 scikit-fuzzy
